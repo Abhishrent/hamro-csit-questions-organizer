@@ -11,7 +11,7 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "inquirer": "^8.2.7",
+    "inquirer": "^13.4.3",
     "playwright": "^1.60.0"
   }
 }

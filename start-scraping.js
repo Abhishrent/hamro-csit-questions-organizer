@@ -19,7 +19,7 @@ const { chromium } = require("playwright");
 const fs           = require("fs");
 const readline     = require("readline");
 const { execSync } = require("child_process");
-const inquirer     = require("inquirer");
+const inquirer     = require("inquirer").default;
 
 const SITE     = "https://hamrocsit.com";
 const DELAY_MS = 2000;
@@ -56,9 +56,11 @@ async function selectSubjects(subjects) {
     {
       type: "checkbox",
       name: "selected",
-      message: "Select subjects to process (use arrow keys, space to toggle, enter to confirm):",
+      message: "Select subjects to process:",
       choices: choices,
-      pageSize: subjects.length + 1
+      pageSize: subjects.length + 1,
+      searchable: false,
+      highlight: true
     }
   ]);
 
