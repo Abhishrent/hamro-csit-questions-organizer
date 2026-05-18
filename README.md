@@ -48,7 +48,7 @@ A Node.js tool to scrape, organize, and intelligently categorize exam questions 
 1. **Install Node.js v18+** from https://nodejs.org/
 2. **Clone and setup:**
    ```bash
-   git clone https://github.com/yourusername/hamro-csit-question-bank-scraper.git
+   git clone https://github.com/abhishrent/hamro-csit-question-bank-scraper.git
    cd hamro-csit-question-bank-scraper
    npm install && npx playwright install chromium
    ```
@@ -111,7 +111,7 @@ npm --version
 ### Step 1: Clone and Install
 
 ```bash
-git clone https://github.com/yourusername/hamro-csit-question-bank-scraper.git
+git clone https://github.com/abhishrent/hamro-csit-question-bank-scraper.git
 cd hamro-csit-question-bank-scraper
 npm install
 ```
