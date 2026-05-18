@@ -34,12 +34,12 @@ A Node.js tool to scrape, organize, and intelligently categorize exam questions 
 
 ## Features
 
-- ✅ Automatically scrape hamrocsit.com
-- ✅ Auto-detect question years and mark model questions
-- ✅ Extract course units and topics
-- ✅ Use Gemini AI to organize questions by topic
-- ✅ Clean markdown output
-- ✅ Process entire semesters at once
+- Automatically scrape hamrocsit.com
+- Auto-detect question years and mark model questions
+- Extract course units and topics
+- Use Gemini AI to organize questions by topic
+- Clean markdown output
+- Process entire semesters at once
 
 ---
 
@@ -138,9 +138,9 @@ brew install gemini-cli
 
 # Linux
 sudo apt install gemini-cli
-
-# Or: https://geminicli.com/
 ```
+
+Or follow the [official Gemini CLI installation guide](https://geminicli.com/docs/get-started/installation/)
 
 **Login:**
 
@@ -266,8 +266,8 @@ Enter choice (1-5): 4
 ```
 
 **Prerequisites:**
-- ✅ Already ran option 3 (or have both question-banks and syllabus)
-- ✅ Logged in to Gemini: `gemini`
+- Already ran option 3 (or have both question-banks and syllabus)
+- Logged in to Gemini: `gemini`
 
 **What it does:**
 - Reads question and syllabus files
