@@ -18,6 +18,7 @@
 const { chromium } = require("playwright");
 const fs           = require("fs");
 const readline     = require("readline");
+const { execSync } = require("child_process");
 
 const SITE     = "https://hamrocsit.com";
 const DELAY_MS = 2000;
@@ -255,6 +256,166 @@ async function extractQuestions(page) {
   return fromDom.filter(q => q.length > 5);
 }
 
+// ── Organize Questions using AI ──────────────────────────────
+
+async function organizeQuestions(semNum, semesterWord) {
+  const classificationPrompt = `You are a university exam question organizer.
+
+You will be given:
+1. A SYLLABUS defining units and topics (numbered like 1.1, 2.3, etc.)
+2. A QUESTION BANK containing exam questions from multiple years.
+
+Your task:
+- Map EVERY question to the most relevant syllabus unit and topic.
+- If a question covers multiple topics, duplicate it under each
+  relevant topic.
+- Never skip or omit any question.
+- Use ONLY units and topics that exist in the syllabus — do not
+  invent new ones.
+
+Return ONLY a valid markdown document. No explanation, no preamble,
+no text after. No JSON.
+
+The markdown must follow this exact structure:
+
+## Unit 1: <unit_title>
+
+### 1.1 <topic_title>
+
+| Q# | Year | Question | Topic |
+|---|---|---|---|
+| Q3 | 2081 | Full question text, copied exactly. | 1.1 <topic_title> |
+
+### 1.2 <topic_title>
+
+| Q# | Year | Question | Topic |
+|---|---|---|---|
+
+Rules:
+- Every unit from the syllabus must appear as a ## heading, even
+  if it has no questions.
+- Every topic must appear as a ### heading under its unit, even
+  if it has no questions. For empty topics show the table headers
+  but no data rows.
+- Within each topic table, sort rows by year descending (newest
+  first). Model sets come last.
+- Topic column (last column) must contain the topic code and name (e.g., "1.1 Introduction to SPM")
+- Q# is the original question number from that paper (e.g. Q4, Q11).
+- Year is the paper label (e.g. 2081, Model Set II).
+- Question text must be copied exactly — do not summarize or shorten.
+- Pipe characters | inside question text must be escaped as \\|
+- Newlines inside question text must be collapsed to a single space.
+- Output only the markdown. No preamble, no explanation, no
+  commentary after.
+
+SYLLABUS:
+{{SYLLABUS}}
+
+QUESTION BANK:
+{{QUESTIONS}}`;
+
+  const QBANK_DIR    = `output/${semesterWord}/question-banks`;
+  const SYLLABUS_DIR = `output/${semesterWord}/syllabus`;
+  const ORG_DIR      = `output/${semesterWord}/organized`;
+
+  // Create output directory if it doesn't exist
+  fs.mkdirSync(ORG_DIR, { recursive: true });
+
+  // Get all question bank files
+  let qbankFiles;
+  try {
+    qbankFiles = fs.readdirSync(QBANK_DIR).filter(f => f.endsWith(".md"));
+  } catch (err) {
+    console.log(`Error: Could not read question bank directory (${QBANK_DIR})`);
+    return;
+  }
+
+  if (!qbankFiles.length) {
+    console.log(`No question bank files found in ${QBANK_DIR}`);
+    return;
+  }
+
+  console.log(`Found ${qbankFiles.length} subject(s) to organize.`);
+
+  let skipped = 0;
+  let processed = 0;
+
+  for (const qbankFile of qbankFiles) {
+    const slug = qbankFile.replace(".md", "");
+    const qbankPath = `${QBANK_DIR}/${qbankFile}`;
+    const syllabusPath = `${SYLLABUS_DIR}/${slug}.md`;
+
+    // Check if both files exist
+    if (!fs.existsSync(syllabusPath)) {
+      console.log(`  ⚠  [${slug}] Skipped: syllabus file not found at ${syllabusPath}`);
+      skipped++;
+      continue;
+    }
+
+    if (!fs.existsSync(qbankPath)) {
+      console.log(`  ⚠  [${slug}] Skipped: question bank file not found at ${qbankPath}`);
+      skipped++;
+      continue;
+    }
+
+    console.log(`\n  Processing [${slug}]...`);
+
+    try {
+      // Read both files
+      const syllabusContent = fs.readFileSync(syllabusPath, "utf8");
+      const questionsContent = fs.readFileSync(qbankPath, "utf8");
+
+      // Prepare the prompt
+      const fullPrompt = classificationPrompt
+        .replace("{{SYLLABUS}}", syllabusContent)
+        .replace("{{QUESTIONS}}", questionsContent);
+
+      // Call Gemini CLI
+      console.log(`    Calling Gemini CLI...`);
+      
+      // Write prompt to temporary file
+      const tmpFile = `/tmp/gemini_prompt_${slug}_${Date.now()}.txt`;
+      fs.writeFileSync(tmpFile, fullPrompt, "utf8");
+      
+      try {
+        // Call gemini CLI with the prompt file using stdin and -p flag
+        const result = execSync(`cat ${tmpFile} | gemini -p ""`, {
+          encoding: "utf8",
+          maxBuffer: 10 * 1024 * 1024,
+          shell: "/bin/bash"
+        });
+        
+        // Clean up temp file
+        fs.unlinkSync(tmpFile);
+
+        // Prepare output with header
+        const timestamp = new Date().toLocaleString();
+        const header = `# ${slug} — Organized by Syllabus Unit\n**Semester:** ${semNum} | **Generated:** ${timestamp}\n\n`;
+        const output = header + result;
+
+        // Write output file
+        const outputPath = `${ORG_DIR}/${slug}.md`;
+        fs.writeFileSync(outputPath, output, "utf8");
+        console.log(`    ✓ Saved → ${outputPath}`);
+        processed++;
+      } catch (err) {
+        // Clean up temp file if it still exists
+        try { fs.unlinkSync(tmpFile); } catch (_) {}
+        console.log(`    ✗ Error processing [${slug}]: ${err.message}`);
+      }
+    } catch (err) {
+      console.log(`    ✗ Error processing [${slug}]: ${err.message}`);
+    }
+  }
+
+  console.log(`\n${"=".repeat(64)}`);
+  console.log(`Organization complete:`);
+  console.log(`  Processed: ${processed}`);
+  console.log(`  Skipped: ${skipped}`);
+  console.log(`  Output directory: ${ORG_DIR}/`);
+  console.log("=".repeat(64));
+}
+
 // ── Main ──────────────────────────────────────────────────────
 
 (async () => {
@@ -277,8 +438,9 @@ async function extractQuestions(page) {
       "  1) Question Banks only\n" +
       "  2) Syllabus only\n" +
       "  3) Both Question Banks and Syllabus\n" +
-      "  4) Cancel\n" +
-      "Enter choice (1-4): "
+      "  4) Organize Questions (uses already-scraped files)\n" +
+      "  5) Cancel\n" +
+      "Enter choice (1-5): "
     );
     
     if (option === "1") {
@@ -292,10 +454,16 @@ async function extractQuestions(page) {
       scrapeSyllabus = true;
       break;
     } else if (option === "4") {
+      // Organize Questions mode
+      const semesterWord = SEMESTER_WORDS[semNum];
+      await organizeQuestions(semNum, semesterWord);
+      console.log("Done!");
+      process.exit(0);
+    } else if (option === "5") {
       console.log("Cancelled.");
       process.exit(0);
     } else {
-      console.log("  Invalid choice. Please enter 1, 2, 3, or 4.");
+      console.log("  Invalid choice. Please enter 1, 2, 3, 4, or 5.");
     }
   }
 
