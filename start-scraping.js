@@ -41,6 +41,76 @@ function prompt(question) {
   return new Promise(resolve => rl.question(question, ans => { rl.close(); resolve(ans.trim()); }));
 }
 
+// ── Multi-select subjects helper ──────────────────────────────
+async function selectSubjects(subjects) {
+  if (subjects.length === 0) return [];
+  
+  console.log("\n✔ Select subjects to process:");
+  console.log("");
+  
+  subjects.forEach((s, i) => {
+    console.log(`  ${i + 1}. ${s.slug}`);
+  });
+  
+  console.log("");
+  console.log("  Examples: '1 3 5'  or  '1-5'  or  'all' (default)");
+  console.log("");
+  
+  while (true) {
+    const input = await prompt("? Choice: ");
+    
+    // Default to 'all' on empty input
+    if (input === "") {
+      return subjects;
+    }
+    
+    if (input.toLowerCase() === "all") {
+      return subjects;
+    }
+    
+    if (input.toLowerCase() === "none") {
+      return [];
+    }
+    
+    let indices = [];
+    
+    // Handle range syntax like "1-5"
+    const parts = input.split(/[\s,]+/);
+    for (const part of parts) {
+      if (part.includes("-")) {
+        const [start, end] = part.split("-").map(x => parseInt(x.trim(), 10));
+        if (!isNaN(start) && !isNaN(end)) {
+          for (let i = Math.min(start, end); i <= Math.max(start, end); i++) {
+            indices.push(i - 1);
+          }
+        }
+      } else {
+        const idx = parseInt(part, 10);
+        if (!isNaN(idx)) {
+          indices.push(idx - 1);
+        }
+      }
+    }
+    
+    // Remove duplicates
+    indices = [...new Set(indices)];
+    
+    if (indices.length === 0) {
+      console.log("  ✗ Invalid input. Try: 1 3 5 or 1-5 or all");
+      continue;
+    }
+    
+    if (indices.some(i => i < 0 || i >= subjects.length)) {
+      console.log(`  ✗ Numbers must be between 1 and ${subjects.length}`);
+      continue;
+    }
+    
+    const selected = indices.map(i => subjects[i]);
+    console.log(`  ✔ Selected: ${selected.map(s => s.slug).join(", ")}\n`);
+    return selected;
+  }
+}
+
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 function getYear(label) { const m = label.match(/\b(20\d{2})\b/); return m ? parseInt(m[1]) : 0; }
 function isModel(label) { return /model/i.test(label); }
@@ -335,13 +405,24 @@ QUESTION BANK:
     return;
   }
 
-  console.log(`Found ${qbankFiles.length} subject(s) to organize.`);
+  console.log(`Found ${qbankFiles.length} subject(s).`);
+
+  // ── Let user select which subjects to organize ───────────────
+  const subjects = qbankFiles.map(f => ({ slug: f.replace(".md", ""), name: f.replace(".md", "") }));
+  const selectedSubjects = await selectSubjects(subjects);
+  
+  if (!selectedSubjects.length) {
+    console.log("No subjects selected. Cancelling.");
+    return;
+  }
+
+  console.log(`Organizing ${selectedSubjects.length} subject(s).`);
 
   let skipped = 0;
   let processed = 0;
 
-  for (const qbankFile of qbankFiles) {
-    const slug = qbankFile.replace(".md", "");
+  for (const { slug } of selectedSubjects) {
+    const qbankFile = `${slug}.md`;
     const qbankPath = `${QBANK_DIR}/${qbankFile}`;
     const syllabusPath = `${SYLLABUS_DIR}/${slug}.md`;
 
@@ -507,8 +588,17 @@ QUESTION BANK:
     return;
   }
 
+  // ── Let user select which subjects to scrape ─────────────────
+  const selectedSubjects = await selectSubjects(SUBJECTS);
+  
+  if (!selectedSubjects.length) {
+    console.log("No subjects selected. Cancelling.");
+    await browser.close();
+    return;
+  }
+
   // ── Scrape each subject ──────────────────────────────────────
-  for (const { slug, name } of SUBJECTS) {
+  for (const { slug, name } of selectedSubjects) {
     console.log(`\n${"=".repeat(64)}`);
     console.log(`  [${name}]`);
     console.log("=".repeat(64));
@@ -528,6 +618,8 @@ QUESTION BANK:
       const paperLinks = await getPaperLinks(page, semesterWord, slug);
       console.log(`  Found ${paperLinks.length} question bank paper(s)`);
 
+      let hasQuestions = false;
+
       if (!paperLinks.length) {
         qbankLines.push("*No paper links found*\n");
       } else {
@@ -542,23 +634,26 @@ QUESTION BANK:
           const questions = await extractQuestions(page);
           console.log(`    ${questions.length} question(s) extracted`);
 
-          qbankLines.push(`### Year: ${yearDisplay}${modelTag}`);
-          qbankLines.push(`**Label:** ${label}`);
-          qbankLines.push(`**URL:** ${url}`);
-          qbankLines.push("");
-
           if (questions.length) {
+            hasQuestions = true;
+            qbankLines.push(`### Year: ${yearDisplay}${modelTag}`);
+            qbankLines.push(`**Label:** ${label}`);
+            qbankLines.push(`**URL:** ${url}`);
+            qbankLines.push("");
             questions.forEach(q => qbankLines.push(`${q}`));
             qbankLines.push("");
-          } else {
-            qbankLines.push("*No questions extracted from this page*\n");
           }
         }
       }
 
-      const qbankFile = `${QBANK_DIR}/${slug}.md`;
-      fs.writeFileSync(qbankFile, qbankLines.join("\n"), "utf8");
-      console.log(`  Saved question bank → ${qbankFile}`);
+      // ── Only write file if there's actual content ────────────
+      if (hasQuestions) {
+        const qbankFile = `${QBANK_DIR}/${slug}.md`;
+        fs.writeFileSync(qbankFile, qbankLines.join("\n"), "utf8");
+        console.log(`  ✓ Saved question bank → ${qbankFile}`);
+      } else {
+        console.log(`  ✗ Skipped: no questions extracted for ${slug}`);
+      }
     }
 
     // ── Scrape Syllabus ──────────────────────────────────────
@@ -575,14 +670,16 @@ QUESTION BANK:
       const syllabus = await extractSyllabus(page);
       console.log(`  Extracting syllabus content...`);
 
+      let hasSyllabusContent = false;
+
       if (!syllabus) {
         console.log("  (Syllabus not found on page)");
-        syllabusLines.push("*Syllabus content not found*\n");
       } else {
         if (syllabus.header) {
           const headerLines = syllabus.header.split('\n').filter(line => line.trim());
           headerLines.forEach(line => syllabusLines.push(`> ${line}`));
           syllabusLines.push("");
+          hasSyllabusContent = true;
         }
 
         if (syllabus.courseMetadata) {
@@ -597,6 +694,7 @@ QUESTION BANK:
             }
           });
           syllabusLines.push("");
+          hasSyllabusContent = true;
         }
 
         if (syllabus.units && syllabus.units.length) {
@@ -606,6 +704,7 @@ QUESTION BANK:
               syllabusLines.push(`#### ${unit.title}\n`);
               if (unit.description) {
                 syllabusLines.push(unit.description);
+                hasSyllabusContent = true;
               }
               syllabusLines.push("");
             }
@@ -616,6 +715,7 @@ QUESTION BANK:
           syllabusLines.push("### Laboratory Works\n");
           syllabusLines.push(syllabus.labWorks);
           syllabusLines.push("");
+          hasSyllabusContent = true;
         }
 
         if (syllabus.textBooks) {
@@ -623,6 +723,7 @@ QUESTION BANK:
           const bookLines = syllabus.textBooks.split('\n').filter(line => line.trim());
           bookLines.forEach(line => syllabusLines.push(`- ${line}`));
           syllabusLines.push("");
+          hasSyllabusContent = true;
         }
 
         if (syllabus.referenceBooks) {
@@ -630,12 +731,18 @@ QUESTION BANK:
           const refLines = syllabus.referenceBooks.split('\n').filter(line => line.trim());
           refLines.forEach(line => syllabusLines.push(`- ${line}`));
           syllabusLines.push("");
+          hasSyllabusContent = true;
         }
       }
 
-      const syllabusFile = `${SYLLABUS_DIR}/${slug}.md`;
-      fs.writeFileSync(syllabusFile, syllabusLines.join("\n"), "utf8");
-      console.log(`  Saved syllabus → ${syllabusFile}`);
+      // ── Only write file if there's actual content ────────────
+      if (hasSyllabusContent) {
+        const syllabusFile = `${SYLLABUS_DIR}/${slug}.md`;
+        fs.writeFileSync(syllabusFile, syllabusLines.join("\n"), "utf8");
+        console.log(`  ✓ Saved syllabus → ${syllabusFile}`);
+      } else {
+        console.log(`  ✗ Skipped: no syllabus content extracted for ${slug}`);
+      }
     }
   }
 
