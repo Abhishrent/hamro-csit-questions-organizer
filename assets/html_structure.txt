@@ -1,0 +1,1783 @@
+<!doctype html>
+<html lang="en-US" prefix="og: https://ogp.me/ns#">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="shortcut icon" type="image/x-icon"
+		href="https://hamrocsit.com/wp-content/themes/tucsitnotes/assets/images/new/favicon-new.ico" />
+	<style id="jetpack-boost-critical-css">@media all{ul{box-sizing:border-box}*,:after,:before{box-sizing:inherit}*{scroll-behavior:inherit!important}body,html{height:auto;width:100%;margin:0;padding:0;box-sizing:border-box}body{font-family:sans-serif;font-style:normal;font-size:16px;font-weight:400;line-height:1.8}a{color:#14212b;display:inline-block}a{outline:0;text-decoration:none}ul{margin:0;padding:0}li{list-style:none}h2,h4,h5{color:#333;margin:0;font-weight:600;font-family:heebo,sans-serif;line-height:1.2}.btn{font-weight:600;padding:.6rem 1.25rem;border:none}.btn-primary{background:var(--primary);color:#fff}.header{box-shadow:0 1px 4px 0 rgb(0 0 0/.1);background:#fff}body .btn-apple{color:#fff;background-color:#111;border-color:#000;padding:15px 16px 5px 40px;position:relative;font-weight:600;margin-right:10px}.btn-apple:before{content:"";background-size:cover;background-repeat:no-repeat;width:30px;height:30px;position:absolute;left:6px;top:50%;margin-top:-15px}.btn-apple:before{background-image:url(https://hamrocsit.com/wp-content/themes/tucsitnotes/assets/images/apple.png)}.btn-apple:after{content:"GET IT ON";position:absolute;top:5px;left:40px;font-size:10px;font-weight:400}body a{border-radius:0!important}@media only screen and (max-width:400px){.community_container{padding:0!important}body .community_forum .community_container{padding:0!important}}body img{max-width:100%!important;height:auto}.modal{top:20%}.btn-close{box-shadow:none;border:none;outline:0}.modal-body .icons{margin:15px 0 20px 0}.modal-body .icons a{text-decoration:none;border:1px solid #fff0;width:40px;height:40px;border-radius:50%;margin-right:20px}.modal-body .icons a:first-child{color:#1877f2;border-color:#b7d4fb}.modal-body .icons a:nth-child(2){color:#07f;border-color:#9bcaff}.modal-body .icons a:nth-child(3){color:#46c1f6;border-color:#b6e7fc}.modal-body .icons a:nth-child(4){color:#e1306c;border-color:#f5bccf}.modal-body .icons a:nth-child(5){color:#25d366;border-color:#bef4d2}.modal-body .icons a:nth-child(6){color:#08c;border-color:#b3e6ff}.modal-body .field{margin:15px 0-5px 0;height:45px;border:1px solid #dfdfdf;border-radius:5px;padding:0 5px;padding-right:0}.field span{width:50px;font-size:1.1rem}.field input{border:none;outline:0;font-size:.89rem;width:100%;height:100%}.field button{padding:5px 16px;color:#fff;background:var(--primary);border:2px solid #fff0;border-radius:5px;font-weight:500}@media (max-width:330px){.modal-body .icons a{margin-right:15px;width:35px;height:35px}}#shareModal .modal-body .field,#shareModal .modal-content,#shareModal .modal-content button,#shareModal .modal-content input{border-radius:0}.hero-shape-area img{position:absolute}.hero-shape-1{bottom:35%;left:0;width:35px}.hero-shape-2{top:40%;left:50%}.hero-shape-3{top:10px;left:30%}.hero-shape-4{bottom:10%;left:25%}.site-breadcrumb:not(.subject_course_container){background-color:#edeef3;position:relative;padding-top:calc(120px + var(--instruction))!important;padding-bottom:80px!important;text-align:center}.site-breadcrumb .breadcrumb-title{font-size:40px;color:#202029;font-weight:700;margin-bottom:10px;text-transform:capitalize}.site-breadcrumb .breadcrumb-menu{position:relative;z-index:1}.site-breadcrumb .breadcrumb-menu li{position:relative;display:inline-block;margin-left:25px;color:#202029;font-weight:400;text-transform:capitalize}.site-breadcrumb .breadcrumb-menu li a{color:#202029}.site-breadcrumb .breadcrumb-menu li.active{color:var(--primary)}.site-breadcrumb .breadcrumb-menu li::before{position:absolute;content:"//";right:-21px;top:4px;text-align:center;font-size:12px;color:#202029}.site-breadcrumb .breadcrumb-menu li:first-child{margin-left:0}.site-breadcrumb .breadcrumb-menu li:last-child:before{display:none}.site-breadcrumb .hero-shape-2{top:40%;left:90%}.site-breadcrumb .hero-shape-4{bottom:10%;left:50%}@media (max-width:600px){.hero-shape-area img.hero-shape-1{width:25px}}@media (max-width:991px){.site-breadcrumb{padding-bottom:80px}}@media (min-width:1200px){.container{max-width:1185px}}.list-account-info{position:relative;margin-left:15px}.list-account-info .account-info{overflow:hidden;display:flex;background:var(--primary);align-items:center;padding:5px;border-radius:6px;width:115px}.list-account-info .account-info img{width:25px;height:25px;background:#fff;border-radius:100%}.list-account-info .account-info span{color:#fff;padding-left:5px}.list-account-info .toggle-account{position:absolute;background-color:#fff;-webkit-border-radius:7px;-moz-border-radius:7px;border-radius:7px;-webkit-box-shadow:0 0 7px rgb(0 0 0/30%);-moz-box-shadow:0 0 7px rgb(0 0 0/.3);box-shadow:0 0 7px rgb(0 0 0/30%);width:170px;top:60px;right:-14px;opacity:0;visibility:hidden;z-index:9}.list-account-info .toggle-account:before{content:"";display:block;position:absolute;border:7px solid #fff0;border-bottom-color:#fff;top:-14px;right:18px}.list-account-info .toggle-account:after{content:"";display:block;clear:both}.list-account-info .list-account{padding:10px 0;list-style:none;margin:0}.list-account-info .list-account li a{position:relative;display:block;line-height:30px;color:#666;font-family:Lato,sans-serif;font-size:14px;padding:0 15px}.list-account-info .list-account li a i{color:#a6a6a6;margin-right:10px}@media only screen and (max-width:400px){.header-item-right .list-account-info .account-info span{display:none}.list-account-info .account-info{width:auto}}@media only screen and (max-width:400px){.header-nav-search{display:none}}h2,h4,h5{color:#333;margin:0;font-weight:600;font-family:heebo,sans-serif;line-height:1.2}.style-switcher{position:fixed;right:0;top:100px;padding:15px;width:200px;border:1px solid var(--bg-black-50);background:var(--bg-black-100);z-index:999999999;border-radius:5px;transform:translateX(100%)}.style-switcher .s-icon{position:absolute;height:40px;width:40px;text-align:center;font-size:20px;background:var(--bg-black-100);color:var(--text-black-900);right:100%;border:1px solid var(--bg-black-50);margin-right:25px;border-radius:50%}.style-switcher .s-icon i{line-height:40px;color:#fff}.blog-item{border-radius:5px;margin-bottom:25px;box-shadow:0 0 7px 1px rgb(0 0 0/5%);background:#fff}.blog-item img{border-radius:5px 5px 0 0;max-height:210px;width:100%}.blog-item-info{padding:23px 30px 30px 30px}.blog-item-meta ul{margin:0;padding:0;margin-bottom:14px;border-bottom:1px solid #e6e8eb;padding-bottom:18px}.blog-item-meta ul li{display:inline-block;margin-right:15px;position:relative;color:#202029}.blog-item-meta ul li i{margin-right:5px;color:var(--primary)}.blog-title{font-size:20px;margin-bottom:0;text-transform:capitalize}body .btn-apple{display:none}@media only screen and (max-width:450px){body .header-item-left{align-items:center;justify-content:center}body .header-item-right{justify-content:space-between}}@media only screen and (max-width:450px){body .list-account-info{display:none}}.print_footer{background:#0ba38a;background:linear-gradient(90deg,rgb(11 163 138) 0,rgb(30 174 150) 35%,rgb(9 146 124) 100%);text-align:center;padding:10px;color:#fff;display:none;position:fixed;width:100%;bottom:0}.print_footer a{color:#fff;text-decoration:none}.print_watermark{position:fixed;left:15%;top:40%;font-size:4rem;transform:rotate(-45deg);opacity:.1;z-index:99999;display:none}:root{--color-black:hsl(0,0%,10%);--color-white:hsl(0,0%,100%);--shadow-medium:0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06)}.menu-mobile-footer{display:none}.csit_text{margin-left:-5px;font-weight:300}.header .container{max-width:75rem;height:auto;margin:0 auto;padding:0 1.25rem}.brand{text-transform:uppercase;display:flex;align-items:center;color:#252930;font-size:1.5rem;font-weight:700}.header{margin:0 auto;padding:.75rem 0;background:var(--color-white);-webkit-box-shadow:var(--shadow-medium);box-shadow:var(--shadow-medium)}.header .wrapper{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.header-item-left{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:0;-ms-flex:0 0 17%;flex:0 0 17%}.header-item-center{display:-webkit-box;display:-ms-flexbox;display:flex}.header-item-center ul{padding:0;margin:0}.header-item-right{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-flex:0;-ms-flex:0 0 11%;flex:0 0 11%;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end}.header-item-right .menu-icon{margin-left:1rem;color:var(--color-black)}.header .menu>ul>li{display:inline-block;line-height:3.125rem;margin-left:1.5rem}.header .menu>ul>li>a{position:relative;border:none;outline:0;color:var(--color-black);text-transform:capitalize}.header .menu>ul>li .menu-subs{position:absolute;height:auto;margin-top:1.75rem;padding:0;z-index:109;opacity:0;visibility:hidden;border-radius:.25rem;border-top:3px solid var(--primary);background:var(--color-white);-webkit-box-shadow:var(--shadow-medium);box-shadow:var(--shadow-medium)}.header .menu>ul>li .menu-column-1{min-width:13rem;max-width:16rem}.header .menu-mobile-header,.header .menu-mobile-toggle{display:none}@media screen and (max-width:992px){.header-item-center{-webkit-box-flex:0;-ms-flex:0 0 100%;flex:0 0 100%;-webkit-box-ordinal-group:4;-ms-flex-order:3;order:3}.header-item-left,.header-item-right{-webkit-box-flex:0;-ms-flex:0 0 auto;flex:0 0 auto}.wrapper{-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;margin:0 auto;padding:.5rem 0}.header .menu-mobile-toggle{position:relative;display:block;width:1.75rem;height:1rem;border:none;outline:0;margin-left:1.25rem;margin-top:-.25rem;background:0 0;-webkit-transform:rotate(0);transform:rotate(0)}.header .menu-mobile-toggle span{display:block;position:absolute;width:100%;height:2px;left:0;border:none;outline:0;opacity:1;border-radius:.25rem;background:var(--color-black);-webkit-transform:rotate(0);transform:rotate(0)}.header .menu-mobile-toggle span:first-child{top:0}.header .menu-mobile-toggle span:nth-child(2),.header .menu-mobile-toggle span:nth-child(3){top:.5rem}.header .menu-mobile-toggle span:nth-child(4){top:1rem}.header-item-right{-webkit-box-align:center;-ms-flex-align:center;align-items:center}.header .menu{position:fixed;top:0;left:0;width:75%;height:100%;z-index:111;overflow:hidden;background:var(--color-white);-webkit-transform:translate(-100%);transform:translate(-100%)}.header .menu>ul>li{display:block;line-height:1;margin:0}.header .menu>ul>li>a{display:block;line-height:3.125rem;height:3.125rem;padding:0 3.125rem 0 1rem;border-bottom:1px solid rgb(0 0 0/.1)}.header .menu>ul>li>a i.fa{position:absolute;font-size:1.25rem;line-height:3.125rem;top:0;right:0;width:3.125rem;height:3.125rem;text-align:center;-webkit-transform:rotate(-90deg);transform:rotate(-90deg)}.header .menu .menu-mobile-header{position:relative;position:sticky;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;top:0;height:3.125rem;z-index:110;border-bottom:1px solid rgb(0 0 0/.1);background:var(--color-white)}.header .menu .menu-mobile-header .menu-mobile-arrow{display:none;font-size:1.25rem;line-height:3.125rem;width:3.125rem;height:3.125rem;text-align:center;border-right:1px solid rgb(0 0 0/.1);color:var(--color-black)}.header .menu .menu-mobile-header .menu-mobile-title{font-family:inherit;font-size:1rem;font-weight:500;line-height:inherit;color:var(--color-black);text-transform:capitalize}.header .menu .menu-mobile-header .menu-mobile-close{font-size:22px;width:3.125rem;height:3.125rem;text-align:center;color:var(--color-black);border:none;display:flex;justify-content:center;align-items:center}.header .menu .menu-mobile-footer{position:absolute;bottom:0;z-index:99999;width:100%;display:flex;justify-content:center;align-items:center}.header .menu-mobile-footer a{display:block;width:50%;padding:15px;text-transform:uppercase;font-weight:400;font-size:13px}.header .menu-mobile-footer a i{margin-right:5px}.header .menu-mobile-footer a.first{border-right:2px solid #fff}.header .menu .menu-section{height:100%;overflow-y:auto;overflow-x:hidden}.header .menu>ul>li .menu-subs{position:absolute;display:none;top:0;left:0;max-width:none;min-width:auto;width:100%;height:100%;margin:0;padding:1rem;padding-top:4rem;opacity:1;overflow-y:auto;visibility:visible;-webkit-transform:translateX(0);transform:translateX(0);-webkit-box-shadow:none;box-shadow:none}.overlay{position:fixed;top:0;left:0;width:100%;height:100%;z-index:100;opacity:0;visibility:hidden;background:rgb(0 0 0/.65)}.logo_text_full .csit_text{margin-top:-11px;font-size:15px}.header{padding:0}.logo_text_full span{display:flex;align-items:center;justify-content:center}}.menu-subs li{list-style:none;line-height:2rem;padding:.3rem 1.2rem;margin:.2rem 0}.menu-subs li:first-child{margin-top:0}.menu-subs li:last-child{margin-bottom:0}body .application_version{position:absolute;top:0;height:25px;width:25px;font-size:12px;text-align:center;line-height:inherit;right:3px;color:red;font-weight:700;margin-top:-14px}body .site-breadcrumb .breadcrumb-title{padding-top:8rem}}</style><script>window._wca = window._wca || [];</script>
+
+<!-- Search Engine Optimization by Rank Math - https://rankmath.com/ -->
+<title>Advanced Java Programming - Seventh Semester - Hamro CSIT</title>
+<meta name="description" content="This is the complete syllabus of Advanced Java Programming of Seventh Semester CSIT under TU with laboratory, reference book and text book. - Hamro CSIT"/>
+<meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
+<link rel="canonical" href="https://hamrocsit.com/semester/seventh/advanced-java/syllabus" />
+<link rel="next" href="https://hamrocsit.com/articles/page/2/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Advanced Java Programming - Seventh Semester - Hamro CSIT" />
+<meta property="og:description" content="This is the complete syllabus of Advanced Java Programming of Seventh Semester CSIT under TU with laboratory, reference book and text book. - Hamro CSIT" />
+<meta property="og:url" content="https://hamrocsit.com/semester/seventh/advanced-java/syllabus" />
+<meta property="og:site_name" content="HAMROCSIT sagging" />
+<meta property="fb:app_id" content="1877420659114927" />
+<meta property="og:image" content="https://hamrocsit.com/wp-content/uploads/2022/08/baner-min-scaled.jpg" />
+<meta property="og:image:secure_url" content="https://hamrocsit.com/wp-content/uploads/2022/08/baner-min-scaled.jpg" />
+<meta property="og:image:width" content="768" />
+<meta property="og:image:height" content="432" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Advanced Java Programming - Seventh Semester - Hamro CSIT" />
+<meta name="twitter:description" content="This is the complete syllabus of Advanced Java Programming of Seventh Semester CSIT under TU with laboratory, reference book and text book. - Hamro CSIT" />
+<meta name="twitter:site" content="@scthakuri1" />
+<meta name="twitter:image" content="https://hamrocsit.com/wp-content/uploads/2022/08/baner-min-scaled.jpg" />
+<!-- /Rank Math WordPress SEO plugin -->
+
+<link rel='dns-prefetch' href='//ajax.googleapis.com' />
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<link rel='dns-prefetch' href='//stats.wp.com' />
+<link rel='dns-prefetch' href='//cdn.jsdelivr.net' />
+<link rel='dns-prefetch' href='//use.fontawesome.com' />
+<!-- hamrocsit.com is managing ads with Advanced Ads 2.0.21 – https://wpadvancedads.com/ --><script id="hamro-ready">
+			window.advanced_ads_ready=function(e,a){a=a||"complete";var d=function(e){return"interactive"===a?"loading"!==e:"complete"===e};d(document.readyState)?e():document.addEventListener("readystatechange",(function(a){d(a.target.readyState)&&e()}),{once:"interactive"===a})},window.advanced_ads_ready_queue=window.advanced_ads_ready_queue||[];		</script>
+		<noscript><link rel='stylesheet' id='all-css-0c0f6194118e4eee8740dd63da195598' href='https://hamrocsit.com/wp-content/boost-cache/static/8bf0bee0dd.min.css' type='text/css' media='all' /></noscript><link rel='stylesheet' id='all-css-0c0f6194118e4eee8740dd63da195598' href='https://hamrocsit.com/wp-content/boost-cache/static/8bf0bee0dd.min.css' type='text/css' media="not all" data-media="all" onload="this.media=this.dataset.media; delete this.dataset.media; this.removeAttribute( 'onload' );" />
+
+<style id='font-awesome-svg-styles-inline-css'>
+   .wp-block-font-awesome-icon svg::before,
+   .wp-rich-text-font-awesome-icon svg::before {content: unset;}
+/*# sourceURL=font-awesome-svg-styles-inline-css */
+</style>
+<style id='woocommerce-layout-inline-css'>
+
+	.infinite-scroll .woocommerce-pagination {
+		display: none;
+	}
+/*# sourceURL=woocommerce-layout-inline-css */
+</style>
+<style id='tucsit-main-inline-css'>
+:root {--primary: #00af92;--pLight : #aafff1;--bg-black-900: #f2f2fc;--bg-black-100: #fdf9ff;--bg-black-50: #e8dfec;--text-black-900: #302e4d;--text-black-700: #504e70;}
+/*# sourceURL=tucsit-main-inline-css */
+</style>
+<noscript><link rel='stylesheet' id='only-screen-and-max-width-768px-css-3a6ffbd02d701b5a0b6580af43b57dca' href='https://hamrocsit.com/wp-content/boost-cache/static/c0c84af31a.min.css' type='text/css' media='only screen and (max-width: 768px)' /></noscript><link rel='stylesheet' id='only-screen-and-max-width-768px-css-3a6ffbd02d701b5a0b6580af43b57dca' href='https://hamrocsit.com/wp-content/boost-cache/static/c0c84af31a.min.css' type='text/css' media="not all" data-media="only screen and (max-width: 768px)" onload="this.media=this.dataset.media; delete this.dataset.media; this.removeAttribute( 'onload' );" />
+<style id='wp-img-auto-sizes-contain-inline-css'>
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<style id='font-awesome-svg-styles-default-inline-css'>
+.svg-inline--fa {
+  display: inline-block;
+  height: 1em;
+  overflow: visible;
+  vertical-align: -.125em;
+}
+/*# sourceURL=font-awesome-svg-styles-default-inline-css */
+</style>
+<style id='woocommerce-inline-inline-css'>
+.woocommerce form .form-row .required { visibility: visible; }
+/*# sourceURL=woocommerce-inline-inline-css */
+</style>
+<noscript><link rel='stylesheet' id='bootstrap-style-css' href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css?ver=1.0' media='all' />
+</noscript><link rel='stylesheet' id='bootstrap-style-css' href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css?ver=1.0' media="not all" data-media="all" onload="this.media=this.dataset.media; delete this.dataset.media; this.removeAttribute( 'onload' );" />
+<noscript><link rel='stylesheet' id='font-awesome-official-css' href='https://use.fontawesome.com/releases/v6.6.0/css/all.css' media='all' integrity="sha384-h/hnnw1Bi4nbpD6kE7nYfCXzovi622sY5WBxww8ARKwpdLj5kUWjRuyiXaD1U2JT" crossorigin="anonymous" />
+</noscript><link rel='stylesheet' id='font-awesome-official-css' href='https://use.fontawesome.com/releases/v6.6.0/css/all.css' media="not all" data-media="all" onload="this.media=this.dataset.media; delete this.dataset.media; this.removeAttribute( 'onload' );" integrity=media="not all" data-media="all" onload="this.media=this.dataset.media; delete this.dataset.media; this.removeAttribute( 'onload' );" crossorigin=media="not all" data-media="all" onload="this.media=this.dataset.media; delete this.dataset.media; this.removeAttribute( 'onload' );" />
+<noscript><link rel='stylesheet' id='popup-maker-site-css' href='//hamrocsit.com/wp-content/uploads/pum/pum-site-styles.css?generated=1778673706&#038;ver=1.21.5' media='all' />
+</noscript><link rel='stylesheet' id='popup-maker-site-css' href='//hamrocsit.com/wp-content/uploads/pum/pum-site-styles.css?generated=1778673706&#038;ver=1.21.5' media="not all" data-media="all" onload="this.media=this.dataset.media; delete this.dataset.media; this.removeAttribute( 'onload' );" />
+<noscript><link rel='stylesheet' id='font-awesome-official-v4shim-css' href='https://use.fontawesome.com/releases/v6.6.0/css/v4-shims.css' media='all' integrity="sha384-Heamg4F/EELwbmnBJapxaWTkcdX/DCrJpYgSshI5BkI7xghn3RvDcpG+1xUJt/7K" crossorigin="anonymous" />
+</noscript><link rel='stylesheet' id='font-awesome-official-v4shim-css' href='https://use.fontawesome.com/releases/v6.6.0/css/v4-shims.css' media="not all" data-media="all" onload="this.media=this.dataset.media; delete this.dataset.media; this.removeAttribute( 'onload' );" integrity=media="not all" data-media="all" onload="this.media=this.dataset.media; delete this.dataset.media; this.removeAttribute( 'onload' );" crossorigin=media="not all" data-media="all" onload="this.media=this.dataset.media; delete this.dataset.media; this.removeAttribute( 'onload' );" />
+<script type="text/javascript">
+            window._nslDOMReady = (function () {
+                const executedCallbacks = new Set();
+            
+                return function (callback) {
+                    /**
+                    * Third parties might dispatch DOMContentLoaded events, so we need to ensure that we only run our callback once!
+                    */
+                    if (executedCallbacks.has(callback)) return;
+            
+                    const wrappedCallback = function () {
+                        if (executedCallbacks.has(callback)) return;
+                        executedCallbacks.add(callback);
+                        callback();
+                    };
+            
+                    if (document.readyState === "complete" || document.readyState === "interactive") {
+                        wrappedCallback();
+                    } else {
+                        document.addEventListener("DOMContentLoaded", wrappedCallback);
+                    }
+                };
+            })();
+        </script><script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" id="jquery-js"></script>
+<script type="text/javascript" src="https://hamrocsit.com/wp-content/plugins/login-as-users/assets/js/login-as-users.js?ver=1.4.4" id="gwslau-main-script-js"></script>
+<script type="text/javascript" src="https://hamrocsit.com/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.7.0-wc.10.3.4" id="wc-jquery-blockui-js" defer="defer" data-wp-strategy="defer"></script>
+<script type="text/javascript" src="https://hamrocsit.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=10.3.4" id="wc-add-to-cart-js" defer="defer" data-wp-strategy="defer"></script>
+<script type="text/javascript" src="https://hamrocsit.com/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4-wc.10.3.4" id="wc-js-cookie-js" defer="defer" data-wp-strategy="defer"></script>
+<script type="text/javascript" src="https://hamrocsit.com/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=10.3.4" id="woocommerce-js" defer="defer" data-wp-strategy="defer"></script>
+<script type="text/javascript" src="https://stats.wp.com/s-202621.js" id="woocommerce-analytics-js" defer="defer" data-wp-strategy="defer"></script>
+	<style>img#wpstats{display:none}</style>
+		    <script>
+        !function(t,e){var o,n,p,r;e._SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group identify setPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags resetGroups onFeatureFlags addFeatureFlagsHandler onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e._SV=1)}(document,window.posthog||[]);
+
+        posthog.init('phc_TVjuy58yU5XXlKjBFZaP5xKo0j6ESCcKr1KQvgC0brz', {
+            api_host: 'https://us.i.posthog.com',
+            defaults: '2026-01-30',
+            loaded: function(posthog) {
+                                // Anonymous visitor — PostHog auto-tracks with anonymous ID
+                            }
+        });
+    </script>
+    	<noscript><style>.woocommerce-product-gallery{ opacity: 1 !important; }</style></noscript>
+	<script type="text/javascript" id="google_gtagjs" src="https://www.googletagmanager.com/gtag/js?id=G-S2NY6NKD4X" async="async"></script>
+<script type="text/javascript" id="google_gtagjs-inline">
+/* <![CDATA[ */
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-S2NY6NKD4X', {} );
+/* ]]> */
+</script>
+<style type="text/css">div.nsl-container[data-align="left"] {
+    text-align: left;
+}
+
+div.nsl-container[data-align="center"] {
+    text-align: center;
+}
+
+div.nsl-container[data-align="right"] {
+    text-align: right;
+}
+
+
+div.nsl-container div.nsl-container-buttons a[data-plugin="nsl"] {
+    text-decoration: none;
+    box-shadow: none;
+    border: 0;
+}
+
+div.nsl-container .nsl-container-buttons {
+    display: flex;
+    padding: 5px 0;
+}
+
+div.nsl-container.nsl-container-block .nsl-container-buttons {
+    display: inline-grid;
+    grid-template-columns: minmax(145px, auto);
+}
+
+div.nsl-container-block-fullwidth .nsl-container-buttons {
+    flex-flow: column;
+    align-items: center;
+}
+
+div.nsl-container-block-fullwidth .nsl-container-buttons a,
+div.nsl-container-block .nsl-container-buttons a {
+    flex: 1 1 auto;
+    display: block;
+    margin: 5px 0;
+    width: 100%;
+}
+
+div.nsl-container-inline {
+    margin: -5px;
+    text-align: left;
+}
+
+div.nsl-container-inline .nsl-container-buttons {
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+div.nsl-container-inline .nsl-container-buttons a {
+    margin: 5px;
+    display: inline-block;
+}
+
+div.nsl-container-grid .nsl-container-buttons {
+    flex-flow: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+div.nsl-container-grid .nsl-container-buttons a {
+    flex: 1 1 auto;
+    display: block;
+    margin: 5px;
+    max-width: 280px;
+    width: 100%;
+}
+
+@media only screen and (min-width: 650px) {
+    div.nsl-container-grid .nsl-container-buttons a {
+        width: auto;
+    }
+}
+
+div.nsl-container .nsl-button {
+    cursor: pointer;
+    vertical-align: top;
+    border-radius: 4px;
+}
+
+div.nsl-container .nsl-button-default {
+    color: #fff;
+    display: flex;
+}
+
+div.nsl-container .nsl-button-icon {
+    display: inline-block;
+}
+
+div.nsl-container .nsl-button-svg-container {
+    flex: 0 0 auto;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+}
+
+div.nsl-container svg {
+    height: 24px;
+    width: 24px;
+    vertical-align: top;
+}
+
+div.nsl-container .nsl-button-default div.nsl-button-label-container {
+    margin: 0 24px 0 12px;
+    padding: 10px 0;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: .25px;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: clip;
+    white-space: nowrap;
+    flex: 1 1 auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-transform: none;
+    display: inline-block;
+}
+
+div.nsl-container .nsl-button-google[data-skin="light"] {
+    box-shadow: inset 0 0 0 1px #747775;
+    color: #1f1f1f;
+}
+
+div.nsl-container .nsl-button-google[data-skin="dark"] {
+    box-shadow: inset 0 0 0 1px #8E918F;
+    color: #E3E3E3;
+}
+
+div.nsl-container .nsl-button-google[data-skin="neutral"] {
+    color: #1F1F1F;
+}
+
+div.nsl-container .nsl-button-google div.nsl-button-label-container {
+    font-family: "Roboto Medium", Roboto, Helvetica, Arial, sans-serif;
+}
+
+div.nsl-container .nsl-button-apple .nsl-button-svg-container {
+    padding: 0 6px;
+}
+
+div.nsl-container .nsl-button-apple .nsl-button-svg-container svg {
+    height: 40px;
+    width: auto;
+}
+
+div.nsl-container .nsl-button-apple[data-skin="light"] {
+    color: #000;
+    box-shadow: 0 0 0 1px #000;
+}
+
+div.nsl-container .nsl-button-facebook[data-skin="white"] {
+    color: #000;
+    box-shadow: inset 0 0 0 1px #000;
+}
+
+div.nsl-container .nsl-button-facebook[data-skin="light"] {
+    color: #1877F2;
+    box-shadow: inset 0 0 0 1px #1877F2;
+}
+
+div.nsl-container .nsl-button-spotify[data-skin="white"] {
+    color: #191414;
+    box-shadow: inset 0 0 0 1px #191414;
+}
+
+div.nsl-container .nsl-button-apple div.nsl-button-label-container {
+    font-size: 17px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+div.nsl-container .nsl-button-slack div.nsl-button-label-container {
+    font-size: 17px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+div.nsl-container .nsl-button-slack[data-skin="light"] {
+    color: #000000;
+    box-shadow: inset 0 0 0 1px #DDDDDD;
+}
+
+div.nsl-container .nsl-button-tiktok[data-skin="light"] {
+    color: #161823;
+    box-shadow: 0 0 0 1px rgba(22, 24, 35, 0.12);
+}
+
+
+div.nsl-container .nsl-button-kakao {
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.nsl-clear {
+    clear: both;
+}
+
+.nsl-container {
+    clear: both;
+}
+
+.nsl-disabled-provider .nsl-button {
+    filter: grayscale(1);
+    opacity: 0.8;
+}
+
+/*Button align start*/
+
+div.nsl-container-inline[data-align="left"] .nsl-container-buttons {
+    justify-content: flex-start;
+}
+
+div.nsl-container-inline[data-align="center"] .nsl-container-buttons {
+    justify-content: center;
+}
+
+div.nsl-container-inline[data-align="right"] .nsl-container-buttons {
+    justify-content: flex-end;
+}
+
+
+div.nsl-container-grid[data-align="left"] .nsl-container-buttons {
+    justify-content: flex-start;
+}
+
+div.nsl-container-grid[data-align="center"] .nsl-container-buttons {
+    justify-content: center;
+}
+
+div.nsl-container-grid[data-align="right"] .nsl-container-buttons {
+    justify-content: flex-end;
+}
+
+div.nsl-container-grid[data-align="space-around"] .nsl-container-buttons {
+    justify-content: space-around;
+}
+
+div.nsl-container-grid[data-align="space-between"] .nsl-container-buttons {
+    justify-content: space-between;
+}
+
+/* Button align end*/
+
+/* Redirect */
+
+#nsl-redirect-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1000000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(1px);
+    background-color: RGBA(0, 0, 0, .32);;
+}
+
+#nsl-redirect-overlay-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+#nsl-redirect-overlay-spinner {
+    content: '';
+    display: block;
+    margin: 20px;
+    border: 9px solid RGBA(0, 0, 0, .6);
+    border-top: 9px solid #fff;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px RGBA(0, 0, 0, .6), 0 0 0 1px RGBA(0, 0, 0, .6);
+    width: 40px;
+    height: 40px;
+    animation: nsl-loader-spin 2s linear infinite;
+}
+
+@keyframes nsl-loader-spin {
+    0% {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+#nsl-redirect-overlay-title {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #3C434A;
+}
+
+#nsl-redirect-overlay-text {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    text-align: center;
+    font-size: 14px;
+    color: #3C434A;
+}
+
+/* Redirect END*/</style><style type="text/css">/* Notice fallback */
+#nsl-notices-fallback {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    z-index: 10000;
+}
+
+.admin-bar #nsl-notices-fallback {
+    top: 42px;
+}
+
+#nsl-notices-fallback > div {
+    position: relative;
+    background: #fff;
+    border-left: 4px solid #fff;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+    margin: 5px 15px 2px;
+    padding: 1px 20px;
+}
+
+#nsl-notices-fallback > div.error {
+    display: block;
+    border-left-color: #dc3232;
+}
+
+#nsl-notices-fallback > div.updated {
+    display: block;
+    border-left-color: #46b450;
+}
+
+#nsl-notices-fallback p {
+    margin: .5em 0;
+    padding: 2px;
+}
+
+#nsl-notices-fallback > div:after {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    content: '\00d7';
+    display: block;
+    height: 16px;
+    width: 16px;
+    line-height: 16px;
+    text-align: center;
+    font-size: 20px;
+    cursor: pointer;
+}</style>  <!-- <script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1904004086841150"
+     crossorigin="anonymous" defer></script> -->
+<noscript><link rel='stylesheet' id='all-css-ab5a6c1abb45d11e4976dcd8b66694eb' href='https://hamrocsit.com/wp-content/boost-cache/static/d3810d11a2.min.css' type='text/css' media='all' /></noscript><link rel='stylesheet' id='all-css-ab5a6c1abb45d11e4976dcd8b66694eb' href='https://hamrocsit.com/wp-content/boost-cache/static/d3810d11a2.min.css' type='text/css' media="not all" data-media="all" onload="this.media=this.dataset.media; delete this.dataset.media; this.removeAttribute( 'onload' );" />
+
+</head>
+<style>
+    body.dark .course-single-tab .nav{
+        background: #757f9500 !important;
+    }
+    a{
+	text-decoration: none;
+    }
+ 
+  
+</style>
+
+<body class="blog wp-theme-tucsitnotes theme-tucsitnotes woocommerce-no-js aa-prefix-hamro- light"><a href="https://hamrocsit.com/cdn-cgi/content?id=EfKsVFGH88j4Idb6wYS9ZOgnx9vbxh0FU4CNRqCC.og-1779091695.0042305-1.0.1.1-pe1hqG.JczLJOnI9rPrcYHylhjMY34_BPuYda9JyFEE" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+
+	
+			<div class="top_section_wraper " id="site-header">
+			<header class="header">
+				<div class="container">
+					<section class="wrapper">
+						<div class="header-item-left">
+							<a href="https://hamrocsit.com" class="brand">
+								<img style="width:40px;" class="logo-icon me-0"
+									src="https://hamrocsit.com/wp-content/themes/tucsitnotes/assets/images/new/logo.svg"
+									alt="HamroCSIT Logo">
+								<div class="logo_text_full">
+									<span class="hamro_text">HAMRO</span>
+									<span class="csit_text">CSIT</span>
+								</div>
+							</a>
+						</div>
+
+						<!-- Navbar Section -->
+						<div class="header-item-center">
+							<div class="overlay"></div>
+							<nav class="menu" id="menu">
+								<div class="menu-mobile-header">
+									<button type="button" class="menu-mobile-arrow"><i
+											class="fa fa-arrow-left"></i></button>
+									<div class="menu-mobile-title"></div>
+									<button type="button" class="menu-mobile-close"><i class="fa fa-close"></i></button>
+								</div>
+								<ul class="menu-section">
+                                <li class="menu-item" style="position:relative;">
+									<a href="https://hamronotes.com/courses" target="_blank">Course <span class="application_version">New</span></a>
+								</li>
+									<li class="menu-item-has-children">
+										<a href="#">Entrance <i class="fa fa-caret-down"></i></a>
+										<div class="menu-subs menu-column-1">
+											<div class="list-item">
+												<ul>
+													<li><a href="https://hamrocsit.com/entrance/">Take Free Test</a></li><li><a href="https://hamrocsit.com/entrance/preparation/question/">MCQ Questions</a></li><li><a href="https://hamrocsit.com/csit/colleges">Colleges</a></li><li><a href="https://hamrocsit.com/entrance/class">Entrance Class</a></li><li><a href="https://hamrocsit.com/entrance/bsc-csit-entrance-preparation-book">Entrance Books</a></li><li><a href="https://hamrocsit.com/entrance/video-course">Free Entrance Video Course</a></li>												</ul>
+											</div>
+										</div>
+									</li>
+									<li class="menu-item-has-children">
+										<a href="#">Semester <i class="fa fa-caret-down"></i></a>
+										<div class="menu-subs menu-column-1">
+											<div class="list-item">
+												<ul>
+													<li><a href="https://hamrocsit.com/semester/first/">First Semester</a></li><li><a href="https://hamrocsit.com/semester/second/">Second Semester</a></li><li><a href="https://hamrocsit.com/semester/third/">Third Semester</a></li><li><a href="https://hamrocsit.com/semester/fourth/">Fourth Semester</a></li><li><a href="https://hamrocsit.com/semester/fifth/">Fifth Semester</a></li><li><a href="https://hamrocsit.com/semester/sixth/">Sixth Semester</a></li><li><a href="https://hamrocsit.com/semester/seventh/">Seventh Semester</a></li><li><a href="https://hamrocsit.com/semester/eight/">Eight Semester</a></li>												</ul>
+											</div>
+										</div>
+									</li>
+									<li class="menu-item"><a href="https://hamrocsit.com/questions/">Questions</a></li>
+																		<li class="menu-item" style="position:relative;"><a
+											href="https://hamrocsit.com/subscription-plan/">Subscription <span
+												class="application_version" style="left:2px">Automated</span></a></li>
+									<li class="menu-item"><a href="https://hamrocsit.com/notice/">Notices</a></li>
+									<li class="menu-item"><a href="https://hamrocsit.com/articles/">Articles</a></li>
+									<li class="menu-item-has-children">
+										<a href="#">More <i class="fa fa-caret-down"></i></a>
+										<div class="menu-subs menu-column-1">
+											<div class="list-item">
+												<ul>
+													<li><a href="https://hamrocsit.com/ask-question/" target="_blank">Ask Question</a></li><li><a href="https://hamrocsit.com/college-ambassador/" target="_blank">College Ambassadors</a></li><li><a href="https://hamrocsit.com/financial-support-program/" target="_blank">Financial Support Program</a></li><li><a href="https://hamrocsit.com/contribute/" target="_blank">Contribute</a></li><li><a href="https://hamrocsit.com/contact/" target="_blank">Contact Us</a></li>												</ul>
+											</div>
+										</div>
+									</li>
+								</ul>
+
+								<div class="menu-mobile-footer">
+																			<a class="btn btn-primary first" href="https://hamrocsit.com/account/"
+											type="button"><i class="fa fa-sign-in-alt"></i> Login</a>
+										<a class="btn btn-primary" href="https://hamrocsit.com/account/?flow=register"
+											type="button"><i class="fa fa-user-plus"></i> Register</a>
+																	</div>
+							</nav>
+						</div>
+
+						<div class="header-item-right">
+							<a title="Search Questions" href="https://hamrocsit.com/questions/?q="
+								class="menu-icon header-nav-search"><i class="fa fa-search"></i></a>
+
+															<div class="list-account-info">
+									<div class="account-info item-click">
+										<img src="https://hamrocsit.com/wp-content/uploads/2021/09/user.jpg" alt="Hamro CSIT User">
+										<span>Account</span>
+									</div>
+
+									<div class="toggle-account toggle-list">
+										<ul class="list-account">
+											<li><a href="https://hamrocsit.com/account/"><i
+														class="fa fa-sign-in-alt"></i>Sign In</a></li>
+											<li><a
+													href="https://hamrocsit.com/account/?flow=register"><i
+														class="fa fa-user-plus"></i>Create Account</a></li>
+										</ul>
+									</div>
+								</div>
+							
+							<button type="button" class="menu-mobile-toggle" on="tap:header-sidebar">
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+							</button>
+						</div>
+					</section>
+				</div>
+			</header>
+
+			
+			<!-- First Row of Ads -->
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<div class="overflow-hidden" style="max-height: 150px;">
+							<div id="hamro-2774940659" style="float: right;clear: both;"><a href="https://docs.google.com/forms/d/e/1FAIpQLSeDEuvYfEZB3qIbjZ7ILRx7-rROBPqgIRMW3WmLn3O85n-odg/viewform" aria-label="HamroCSIT BANNER"><img src="https://hamrocsit.com/wp-content/uploads/2026/04/HamroCSIT-BANNER.gif" alt=""  width="1200" height="225"   /></a></div><br style="clear: both; display: block; float: none;"/>
+						</div>
+					</div>
+
+					<div class="col-md-6 mb-3">
+						<div class="overflow-hidden" style="max-height: 150px;">
+							<div id="hamro-2442358125" style="float: left;clear: both;"><a href="https://deerhack.deerwalk.edu.np" aria-label="Ad"><img src="https://hamrocsit.com/wp-content/uploads/2025/08/Ad.gif" alt=""  width="800" height="150"   /></a></div><br style="clear: both; display: block; float: none;"/>						</div>
+					</div>
+				</div>
+
+				<!-- Second Row of Ads -->
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<div class="overflow-hidden" style="max-height: 140px;">
+							<div id="hamro-437405145" style="float: left;clear: both;"><a href="https://texasintl.edu.np" aria-label="GIF-6d766988dca74063a58fde46586af61c"><img src="https://hamrocsit.com/wp-content/uploads/2025/02/GIF-6d766988dca74063a58fde46586af61c.gif" alt=""  width="1080" height="150"   /></a></div><br style="clear: both; display: block; float: none;"/>						</div>
+					</div>
+
+					<div class="col-md-6 mb-3">
+						<div class="overflow-hidden" style="max-height: 150px;">
+							<div id="hamro-2459158504" style="float: left;clear: both;"><a href="https://shikshyalayacollege.edu.np" aria-label="800&#215;200-5s-ezgif.com-optimize_final"><img src="https://hamrocsit.com/wp-content/uploads/2024/08/800x200-5s-ezgif.com-optimize_final.gif" alt=""  width="1200" height="300"   /></a></div><br style="clear: both; display: block; float: none;"/>						</div>
+					</div>
+				</div>
+
+			
+
+
+
+
+
+
+
+
+		<script>
+			const menu = document.querySelector('.menu');
+			const menuSection = menu.querySelector('.menu-section');
+			const menuArrow = menu.querySelector('.menu-mobile-arrow');
+			const menuClosed = menu.querySelector('.menu-mobile-close');
+			const menuToggle = document.querySelector('.menu-mobile-toggle');
+			const menuOverlay = document.querySelector('.overlay');
+			let subMenu;
+
+			menuSection.addEventListener('click', (e) => {
+				if (!menu.classList.contains('active')) {
+					return;
+				}
+				if (e.target.closest('.menu-item-has-children')) {
+					const hasChildren = e.target.closest('.menu-item-has-children');
+					showSubMenu(hasChildren);
+				}
+			});
+
+			menuArrow.addEventListener('click', () => {
+				hideSubMenu();
+			});
+
+			menuToggle.addEventListener('click', () => {
+				toggleMenu();
+			});
+
+			menuClosed.addEventListener('click', () => {
+				toggleMenu();
+			});
+
+			menuOverlay.addEventListener('click', () => {
+				toggleMenu();
+			});
+
+			// Show & Hide Toggle Menu Function
+			function toggleMenu() {
+				menu.classList.toggle('active');
+				menuOverlay.classList.toggle('active');
+			}
+
+			// Show the Mobile Side Menu Function
+			function showSubMenu(hasChildren) {
+				subMenu = hasChildren.querySelector('.menu-subs');
+				subMenu.classList.add('active');
+				subMenu.style.animation = 'slideLeft 0.5s ease forwards';
+				const menuTitle = hasChildren.querySelector('i').parentNode.childNodes[0].textContent;
+				menu.querySelector('.menu-mobile-title').innerHTML = menuTitle;
+				menu.querySelector('.menu-mobile-header').classList.add('active');
+			}
+
+			// Hide the Mobile Side Menu Function
+			function hideSubMenu() {
+				subMenu.style.animation = 'slideRight 0.5s ease forwards';
+				setTimeout(() => {
+					subMenu.classList.remove('active');
+				}, 300);
+
+				menu.querySelector('.menu-mobile-title').innerHTML = '';
+				menu.querySelector('.menu-mobile-header').classList.remove('active');
+			}
+
+			// Windows Screen Resizes Function
+			window.onresize = function () {
+				if (this.innerWidth > 991) {
+					if (menu.classList.contains('active')) {
+						toggleMenu();
+					}
+				}
+			};
+		</script>
+
+	<style>
+    /* Default (Light Mode) styles */
+    .syllabus_container {
+        color: #000;
+    }
+    
+    .syllabus_container ol li,
+    .syllabus_container ul.book_list li {
+        list-style: numeric;
+    }
+    
+    .syllabus_container ul.book_list {
+        padding-left: 15px;
+    }
+
+    /* Dark Mode overrides */
+    body.dark .syllabus_container {
+        background-color: #1a1a1a !important; 
+    }
+
+    body.dark .syllabus_container, 
+    body.dark .syllabus_container * {
+        color: #ffffff !important;
+    }
+
+    /* FIX FOR THE CATEGORY MENU LINKS */
+    body.dark .course-single-tab .nav-tabs .nav-link {
+        color: #ffffff !important;
+    }
+    
+    body.dark .course-single-tab .nav-tabs .nav-link.active {
+        color: #ffffff !important;
+        background-color: var(--primary, #3498db) !important;
+    }
+
+    body.dark .syllabus_item a h6 {
+        color: var(--primary, #3498db) !important;
+    }
+    
+    body.dark .syllabus_title {
+        color: #ecf0f1 !important;
+    }
+</style>
+<div class="content_wrapper py-3 entrance_course pt-4">
+        <div class="site-breadcrumb subject_course_container justify-content-start text-start pt-5 mt-3 pb-0">
+        <div class="hero-shape-area"> 
+        <img class="hero-shape-1 d-none d-sm-block" src="https://hamrocsit.com/wp-content/themes/tucsitnotes/assets/images/shapes/shape-1.php?color=00af92" alt="Shape | Hamro CSIT"> 
+        <img class="hero-shape-2 d-none d-sm-block" src="https://hamrocsit.com/wp-content/themes/tucsitnotes/assets/images/shapes/shape-3.php?color=00af92" alt="Shape | Hamro CSIT"> 
+        <img class="hero-shape-3" src="https://hamrocsit.com/wp-content/themes/tucsitnotes/assets/images/shapes/shape-6.png" alt="Shape | Hamro CSIT"> 
+        <img class="hero-shape-4 d-none d-sm-block" src="https://hamrocsit.com/wp-content/themes/tucsitnotes/assets/images/shapes/shape-4.png" alt="Shape | Hamro CSIT"> 
+	</div>        <div class="container pb-3">
+            <div class="row">
+                <div class="col-md-7 pt-3">
+                    <div class="course-single-header">
+                        <span class="course-category course-category-1">Subject</span>
+                        <h4 class="course-single-title">Advanced Java Programming</h4>
+                        <p>This course familiarizes students with basic as well as advanced features of Java Programming Emphasis will be given to GUI and event-driven programming, Database Connectivity, Socket Programming, Servlets and JSP Technology, and Distributed Programming.</p>
+                        <!--<div class="course-single-rating pb-5">-->
+                        <!--    <i class="fas fa-star"></i>-->
+                        <!--    <i class="fas fa-star"></i>-->
+                        <!--    <i class="fas fa-star"></i>-->
+                        <!--    <i class="fas fa-star"></i>-->
+                        <!--    <i class="fas fa-star"></i>-->
+                        <!--    <span>(Best Notes and Solutions)</span>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+                <div class="offset-md-1 col-md-3 d-none d-sm-block">
+                    <div class="subject_image">
+                        <img src="https://hamrocsit.com/wp-content/themes/tucsitnotes/assets/images/shapes/subject.php" alt="Subject Image | Hamro CSIT" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div class="course-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="course-single-wrapper pb-5">
+                        <div class="course-single-tab">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist"><li class="nav-item" role="presentation"><a href="https://hamrocsit.com/semester/seventh/advanced-java//" class="nav-link px-4 m-0 "><i class="fa fa-list"></i> <span>Chapters</span></a></li><li class="nav-item" role="presentation"><a href="https://hamrocsit.com/semester/seventh/advanced-java//syllabus" class="nav-link px-4 m-0 active"><i class="fa fa-book-reader"></i> <span>Syllabus</span></a></li><li class="nav-item" role="presentation"><a href="https://hamrocsit.com/semester/seventh/advanced-java//question-bank" class="nav-link px-4 m-0 "><i class="fa fa-th"></i> <span>Question Banks</span></a></li><li class="nav-item" role="presentation"><a href="https://hamrocsit.com/semester/seventh/advanced-java//questions" class="nav-link px-4 m-0 "><i class="far fa-question-circle"></i> <span>Questions</span></a></li><li class="nav-item" role="presentation"><a href="https://hamrocsit.com/semester/seventh/advanced-java//text-book" class="nav-link px-4 m-0 "><i class="fa fa-book"></i> <span>Text Book</span></a></li><li class="nav-item" role="presentation"><a href="https://hamrocsit.com/semester/seventh/advanced-java//practical" class="nav-link px-4 m-0 "><i class="fa fa-laptop-code"></i> <span>Practical</span></a></li><li class="nav-item" role="presentation"><a href="https://hamrocsit.com/semester/seventh/advanced-java//viva" class="nav-link px-4 m-0 "><i class="fa fa-headset"></i> <span>Viva</span></a></li></ul>                            <div class="tab-content pt-4">
+                                <div class="tab-pane fade active show">
+                                                        					    <div class="row shadow-sm bg-white syllabus_container  pb-5">
+                                                <div class="col-12">
+                                                    <div class="syllabus_header pt-3 pb-5">
+                                                        <p>Tribhuvan University</p>
+                                                        <p>Institute of Science and Technology</p>
+                                                        <p>Bachelor of Science in Computer Science and Information Technology</p>
+                                                    </div>
+                                                </div>
+                                    
+                                                <div class="row complete_header_syllabus ps-5 pr-4">
+                                                    <div class="col-md-6">
+                                                        <div class="marks_header">
+                                                            <p>Course Title: Advanced Java Programming</p>
+                                                            <p>Course no: CSC409</p>
+                                                            <p>Semester: VII</p>
+                                                            <p>Nature of course: Theory + Lab</p>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="col-md-6">
+                                                        <div class="marks_header marks_header_right" style="float: right;">
+                                                            <p>Full Marks: 60 + 20 + 20</p>
+                                                            <p>Pass Marks: 24 + 8 + 8</p>
+                                                            <p>Credit Hours: 3</p>
+                                                        </div>
+                                                    </div>
+                                    
+                                                    <div class="col-md-12 pt-3">
+                                                        <p><strong>Course Description : </strong>
+                                                            This course familiarizes students with basic as well as advanced features of Java Programming Emphasis will be given to GUI and event-driven programming, Database Connectivity, Socket Programming, Servlets and JSP Technology, and Distributed Programming.</p>
+                                    
+                                                        <p><strong>Course Objective : </strong> The main objective of this course is to
+
+-  Introduce basic concepts of Java Programming.
+- Exemplify the concept of GUI programming and JDBC 
+- Demonstrate socket programming. remote objects, and servlet and JSP Technology                                                        </p>
+                                    
+                                                        <h5 class="mt-4 mt-0">Course Contents:</h5>
+                                    
+                                                                                                                <div class="syllabus_item">
+                                                            <a href="https://hamrocsit.com/note/advanced-java/programming-in-java/" target="_blank">
+                                                                <h6>
+                                                                    Unit 1. Programming in Java                                                                    <span>8 Hrs.</span>
+                                                                </h6>
+                                                                <p style="font-size: 0.9rem;">1.1. Java Architecture, Java Buzzwords, Path and ClassPath variables, Sample Java Program, Compiling and Running Java Programs.<br /><br />1.2. Arrays, for each loop, Class and Object, Overloading, Access Privileges, Interface, Inner Class, Final and Static Modifiers, Packages, Inheritance, Overriding.<br /><br />1.3. Handling Exceptions: Try, Catch, Finally, Throws, and Throw keywords, Creating Exception Class<br /><br />1.4. Concurrency: Introduction, Thread States, Writing Multithreaded Programs, Thread Properties, Thread Synchronization, Thread Priorities<br /><br />1.5. Working with Files: Byte Stream Classes, Character Stream Classes, Random Access File, Reading and Writing Objects.</p>
+                                                            </a>
+                                                        </div>
+                                                                                                                <div class="syllabus_item">
+                                                            <a href="https://hamrocsit.com/note/advanced-java/user-interface-components-with-swing/" target="_blank">
+                                                                <h6>
+                                                                    Unit 2. User Interface Components with Swing                                                                    <span>10 Hrs.</span>
+                                                                </h6>
+                                                                <p style="font-size: 0.9rem;">2.1. Introduction: Concept of AWT, AWT vs Swing, Java Applets, Applet Life Cycle, Swing Class Hierarchy, Component and Containers<br /><br />2.2. Layout Management: No Layout, Flow layout, Border Layout, Grid Layout, Gridbag Layout, Group Layout.<br /><br />2.3. GUI Controls: Text Fields, Password Fields, Text Areas, Scroll Pane, Labels, Check Boxes, Radio Buttons, Borders, Combo Boxes, Sliders<br /><br />2.4. Menu, Menu Item, Icons in Menu Items, Check Box and Radio Buttons in Menu Items, Pop-up Menus, Keyboard Mnemonics and Accelerators, Enabling and Disabling Menu Items, Toolbars, Tooltips<br /><br />2.5. Option Dialogs, Creating Dialogs, File Choosers, Color Choosers, Internal Frames, Frames, Tables, Trees, and Tables.</p>
+                                                            </a>
+                                                        </div>
+                                                                                                                <div class="syllabus_item">
+                                                            <a href="https://hamrocsit.com/note/advanced-java/event-handling/" target="_blank">
+                                                                <h6>
+                                                                    Unit 3. Event Handling                                                                    <span>4 Hrs.</span>
+                                                                </h6>
+                                                                <p style="font-size: 0.9rem;">3.1. Event Handling Concept, Listener Interfaces, Using Action Commands, Adapter Classes<br /><br />3.2. Handling Action Events, Key Events, Focus Events, Mouse Event, Window Event, Item Events</p>
+                                                            </a>
+                                                        </div>
+                                                                                                                <div class="syllabus_item">
+                                                            <a href="https://hamrocsit.com/note/advanced-java/database-connectivity/" target="_blank">
+                                                                <h6>
+                                                                    Unit 4. Database Connectivity                                                                    <span>4 Hrs.</span>
+                                                                </h6>
+                                                                <p style="font-size: 0.9rem;">4.1. JDBC Architecture, JDBC Driver Types, JDBC Configuration, Managing Connections, Statements, Result Set, SQL Exceptions<br /><br />4.2. DDL and DML Operations using Java, Prepared Statements, Multiple Results, Scrollable Result Sets, Updateable Result Sets, Row Sets and Cached Row Sets , Transactions, SQL Escapes.</p>
+                                                            </a>
+                                                        </div>
+                                                                                                                <div class="syllabus_item">
+                                                            <a href="https://hamrocsit.com/note/advanced-java/network-programming/" target="_blank">
+                                                                <h6>
+                                                                    Unit 5. Network Programming                                                                    <span>5 Hrs.</span>
+                                                                </h6>
+                                                                <p style="font-size: 0.9rem;">5.1. Transmission control Protocol (TCP), User Datagram Protocol (UDP), Ports, IP Address Network Classes in JDK<br /><br />5.2. Socket programming using TCP, Socket programming using UDP, Working with URL’s, Working with URL Connection Class.<br /><br />5.3. Java Mail API, Sending and Receiving Email</p>
+                                                            </a>
+                                                        </div>
+                                                                                                                <div class="syllabus_item">
+                                                            <a href="https://hamrocsit.com/note/advanced-java/gui-with-javafx/" target="_blank">
+                                                                <h6>
+                                                                    Unit 6. GUI with JavaFX                                                                    <span>3 Hrs.</span>
+                                                                </h6>
+                                                                <p style="font-size: 0.9rem;">6.1. Introduction, JavaFX vs Swing, JavaFX La youts: FlowPane, BorderPane, Hbox, VBox, GridPane<br /><br />6.2. JavaFX UI Controls: Label, TextField, Button, RadioButton, CheckBox, Hyperlink, Menu, Tooltip, FileChooser.</p>
+                                                            </a>
+                                                        </div>
+                                                                                                                <div class="syllabus_item">
+                                                            <a href="https://hamrocsit.com/note/advanced-java/servlets-and-java-server-pages/" target="_blank">
+                                                                <h6>
+                                                                    Unit 7. Servlets and Java Server pages                                                                    <span>8 Hrs.</span>
+                                                                </h6>
+                                                                <p style="font-size: 0.9rem;">7.1. Web Container, Introduction to Servlets, Life cycle of servlets, The servlet APIs, Writing Servlet Programs, Reading Form Parameters, Processing Forms, Handling HTTP Request and Response (GET / POST Request), Database Access with Servlets, Handling Cookies and Session.<br /><br />7.2. Servlet vs JSP, JSP Access Model, JSP Syntax (Directions, Declarations, Expression, Scriplets, Comments), JSP Implicit Objects, Object Scope, Processing Forms, Database Access with JSP.<br /><br />7.3. Introduction to Java Web Frameworks</p>
+                                                            </a>
+                                                        </div>
+                                                                                                                <div class="syllabus_item">
+                                                            <a href="https://hamrocsit.com/note/advanced-java/rmi-and-corba/" target="_blank">
+                                                                <h6>
+                                                                    Unit 8. RMI and CORBA                                                                    <span>3 Hrs.</span>
+                                                                </h6>
+                                                                <p style="font-size: 0.9rem;">8.1 Introduction of RMI, Architecture of RMI, Creating and Executing RMI Applications<br /><br />8.2 Introduction to CORBA, RMI vs CORBA, Architecture of CORBA, IDL, Simple CORBA Program.</p>
+                                                            </a>
+                                                        </div>
+                                                                                            
+                                                        <h5 class="mt-4 pb-3 syllabus_title">Laboratory Works:</h5><p>The laboratory work includes writing programs related to basic java programming concepts, Designing GUI, Event Handling, JDBC, Network Programming, Web Programming, and Distributed Programming. They also learn to develop web applications using Java Web Frameworks.</p>                                                        <h5 class="mt-4 pb-3 syllabus_title">Text Books:</h5>
+                                                        <ul class="book_list">
+                                                            <li>Cay S. Horstmann, Core Java Volume I--Fundamentals, Pearson, Eleventh Edition, 2018</li><li>Cay S. Horstmann, Core Java Volume II-Advance Features, Pearson, Eleventh Edition, 2019</li><li>Herbert Schildt, Java: The Complete Reference, McGraw-Hill Education, Eleventh Edition, 2018</li>                                                        </ul>
+                                                                                                                
+                                                        <h5 class="mt-4 pb-3 syllabus_title">Reference Books:</h5>
+                                                        <ul class="book_list">
+                                                            <li>D.T. Editorial Services, Java 8 Programming Black Book, Dreamtech Press, 2015</li>                                                        </ul>
+                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                    					                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+<div class="modal fade" id="shareModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Share</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Share this link via</p>
+                <div class="d-flex align-items-center icons">
+                    <a href="#" class="fs-5 d-flex align-items-center justify-content-center facebook"> <span class="fab fa-facebook-f"></span> </a>
+                    <a href="#" class="fs-5 d-flex align-items-center justify-content-center messenger"> <span class="fab fa-facebook-messenger"></span> </a>
+                    <a href="#" target="_blank" class="fs-5 d-flex align-items-center justify-content-center twitter"> <span class="fab fa-twitter"></span> </a>
+                    <a href="#" target="_blank" class="fs-5 d-flex align-items-center justify-content-center pinterest"> <span class="fab fa-pinterest"></span> </a>
+                    <a href="#" target="_blank" class="fs-5 d-flex align-items-center justify-content-center whatsapp"> <span class="fab fa-whatsapp"></span> </a>
+                    <a href="#" target="_blank" class="fs-5 d-flex align-items-center justify-content-center email"> <span class="fa fa-envelope"></span> </a>
+                </div>
+                <p>Or copy link</p>
+                <div class="field d-flex align-items-center justify-content-between"> <span class="fas fa-link text-center"></span> <input id="copyURL" type="text" value="some.com/share"> <button type="button" class="copyURLBtn">Copy</button> </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer class="pt-5">
+        <div class="top-footer pb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="block-widget">
+                            <div class="custom-html-widget">
+                                <div class="logo-footer mb-3">
+                                    <div class="site-logo"><a class="navbar-brand" href="https://hamrocsit.com"><img class="logo-icon" style="width:40px;" src="https://hamrocsit.com/wp-content/themes/tucsitnotes/assets/images/new/logo.svg" alt="logo"><span class="logo-text">HAMRO<span class="text-alt">CSIT</span></span></a>
+                                    </div>
+                                </div>
+                                <p class="mt-2 mb-3" style="color:#6c757d;">Hamro CSIT is a comprehensive web and mobile platform that provides B.Sc. CSIT students with resources like notes, syllabi, question banks, solved past papers, practical files, and free entrance preparation materials — all in one place.</p>
+                                <ul class="list-unstyled group-icon-contact">
+                                    <li><i class="fa fa-envelope" aria-hidden="true"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b7ded9d1d8f7dfd6dac5d8d4c4dec399d4d8da">[email&#160;protected]</a> </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <div class="block-widget">
+                            <aside id="nav_menu-3" class="block-widget widget_nav_menu">
+                                <div class="widget-title">
+                                    <h5>Semester</h5>
+                                </div>
+
+                                <ul class="bottomFooter-menu">
+                                    <li><a href="https://hamrocsit.com/semester/first/">First Semester</a></li>
+                                    <li><a href="https://hamrocsit.com/semester/second/">Second Semester</a></li>
+                                    <li><a href="https://hamrocsit.com/semester/third/">Third Semester</a></li>
+                                    <li><a href="https://hamrocsit.com/semester/fourth/">Fourth Semester</a></li>
+                                    <li><a href="https://hamrocsit.com/semester/fifth/">Fifth Semester</a></li>
+                                    <li><a href="https://hamrocsit.com/semester/sixth/">Sixth Semester</a></li>
+                                    <li><a href="https://hamrocsit.com/semester/seventh/">Seventh Semester</a></li>
+                                    <li><a href="https://hamrocsit.com/semester/eight/">Eighth Semester</a></li>
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-2">
+                        <div class="block-widget">
+                            <aside id="nav_menu-2" class="block-widget widget_nav_menu">
+                                <div class="widget-title">
+                                    <h5>Links</h5>
+                                </div>
+                                <ul class="bottomFooter-menu">
+                                    <!--<li><a href="">About CSIT</a></li>-->
+                                    <li><a href="https://hamrocsit.com/about-us">About Us</a></li>
+                                    <li><a href="https://hamrocsit.com/faqs">FAQs</a></li>
+
+                                    <li><a href="https://hamrocsit.com/sitemap.xml">Sitemap</a></li>
+                                    <li><a href="https://hamrocsit.com/privacy-policy">Privacy Policy</a></li>
+                                    <li><a href="https://hamrocsit.com/terms-and-conditions">Terms and Conditions</a></li>
+                                    <li><a href="https://hamrocsit.com/college-ambassador">College Ambassadors</a></li>
+                                    <li><a href="https://hamrocsit.com/financial-support-program">Financial Support Program</a></li>
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="block-down-app">
+                            <div class="widget-title mb-3">
+                                <h5>Hits Counter</h5>
+                            </div>
+                            <div class="group-btn-header float-left">
+                                <div class="hits_counter mb-3">
+                                    <div id="hits_counter_wrap" class="counter-wrapper graph-counter-wrapper"><span class="digit stage-0"><strong>1</strong><span class="blind-plate"></span></span><span class="digit stage-0"><strong>9</strong><span class="blind-plate"></span></span><span class="digit stage-0"><strong>9</strong><span class="blind-plate"></span></span><span class="digit stage-0"><strong>4</strong><span class="blind-plate"></span></span><span class="digit stage-0"><strong>0</strong><span class="blind-plate"></span></span><span class="digit stage-0"><strong>3</strong><span class="blind-plate"></span></span><span class="digit stage-0"><strong>1</strong><span class="blind-plate"></span></span><span class="digit stage-0"><strong>4</strong><span class="blind-plate"></span></span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-down-app">
+                            <div class="group-btn-header mt-4 mb-4 float-left">
+                                <a class="btn btn-google" target="_blank" rel="nofollow noindex" href="https://play.google.com/store/apps/details?id=com.hamrocsit" title="Google Play">Google Play</a>
+                                <a class="btn btn-apple" href="" title="Apple Store">App Store</a>
+                            </div>
+                        </div>
+                        <div class="block-social mt-3">
+                            <div class="widget-title mb-2">
+                                <h5>Follow Us</h5>
+                            </div>
+                            <span class="group-icon-social">
+                                <a target="_blank" rel="nofollow noindex" href="https://facebook.com/hamrocsit1"><i class="fab fa-facebook-square" aria-hidden="true"></i></a>
+                                <a target="_blank" rel="nofollow noindex" href="https://www.instagram.com/hamro_csit/"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                                <a target="_blank" rel="nofollow noindex" href="https://www.youtube.com/channel/UCg1BSedB8QoRYodMvAW-S3g?sub_confirmation=1"><i class="fab fa-youtube"></i></a>
+                                <a target="_blank" rel="nofollow noindex" href="https://np.linkedin.com/company/hamrocsit/"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                                <!-- <a target="_blank" rel="nofollow noindex" href=""><i class="fab fa-pinterest"></i></a> -->
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-footer">
+            <div class="container border-top pt-3">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p class="copyright">Copyright 2026 | <strong>HAMROCSIT</strong> | All Right Reserved </p>
+                    </div>
+                    <div class="col-lg-6 text-end">
+                    	Official Payment Partner
+                    	<img src="https://hamrocsit.com/wp-content/uploads/2024/10/IMG_9256.png" style="max-width: 120px !important;" alt="Esewa Logo" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="style-switcher">
+        <div class="day-night s-icon">
+            <i class="fas fa-sun"></i>
+        </div>
+    </div>
+
+    <style>
+        .messanger_floating a {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            font-size: 2rem;
+            background: #1887FB;
+            width: 50px;
+            height: 50px;
+            color: #fff;
+            border-radius: 100% !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <div class="messanger_floating">
+        <a href="https://m.me/hamrocsit1" rel="nofollow noindex" target="_blank">
+            <i class="fab fa-facebook-messenger"></i>
+        </a>
+    </div>
+
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3914734187955412" crossorigin="anonymous"></script> -->
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script id="google_gtagjs" src="https://www.googletagmanager.com/gtag/js?id=UA-208234922-1" async="async" type="text/javascript"></script>
+<script id="google_gtagjs-inline" type="text/javascript">
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-208234922-1', {
+        'anonymize_ip': true
+    });
+</script>
+<script>
+    $('.target').find('a').attr('target', '_blank');
+</script>
+
+<script type="text/javascript">
+    let iframeIsEnabled = false;
+    // Notice how this gets configured before we load Font Awesome
+    window.FontAwesomeConfig = {
+        autoReplaceSvg: false
+    };
+    let isUserLogin = 0;
+    const isApplication = false;
+
+    function closeFullscreen() {
+        if (document.exitFullscreen) {
+            iframeIsEnabled = false;
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+            iframeIsEnabled = false;
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            iframeIsEnabled = false;
+            document.msExitFullscreen();
+        }
+    }
+
+    window.hamrocsitPDFfullScreen = function() {
+        if (iframeIsEnabled) {
+            closeFullscreen();
+            return true;
+        }
+
+        if (document.fullscreenEnabled ||
+            document.webkitFullscreenEnabled ||
+            document.mozFullScreenEnabled ||
+            document.msFullscreenEnabled) {
+
+            // which element will be fullscreen
+            const iframe = document.querySelector('#hamrocsitPDF');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.mozRequestFullScreen) {
+                iframe.mozRequestFullScreen();
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen();
+            }
+        } else {
+            alert("Your browser is not supported");
+        }
+    }
+
+    document.addEventListener('webkitfullscreenchange', fullscreenChange);
+    document.addEventListener('mozfullscreenchange', fullscreenChange);
+    document.addEventListener('fullscreenchange', fullscreenChange);
+    document.addEventListener('MSFullscreenChange', fullscreenChange);
+
+    function fullscreenChange() {
+        if (document.fullscreenEnabled ||
+            document.webkitIsFullScreen ||
+            document.mozFullScreen ||
+            document.msFullscreenElement) {
+            iframeIsEnabled = true;
+        } else {
+            iframeIsEnabled = false;
+        }
+        //const iframe = document.querySelector('#hamrocsitPDF');
+        //iframe.src = iframe.src;
+    }
+
+    $(".qnbanknextbtn").click(function() {
+        $('.modal-body').scrollTop(0);
+    });
+</script>
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/tucsitnotes/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<div 
+	id="pum-76795" 
+	role="dialog" 
+	aria-modal="false"
+	aria-labelledby="pum_popup_title_76795"
+	class="pum pum-overlay pum-theme-59320 pum-theme-lightbox popmake-overlay auto_open click_open" 
+	data-popmake="{&quot;id&quot;:76795,&quot;slug&quot;:&quot;free-video-course-dl-maths-i-physics&quot;,&quot;theme_id&quot;:59320,&quot;cookies&quot;:[{&quot;event&quot;:&quot;on_popup_close&quot;,&quot;settings&quot;:{&quot;name&quot;:&quot;pum-76795&quot;,&quot;key&quot;:&quot;&quot;,&quot;session&quot;:null,&quot;path&quot;:true,&quot;time&quot;:&quot;23 hours 59 minutes 59 seconds&quot;}}],&quot;triggers&quot;:[{&quot;type&quot;:&quot;auto_open&quot;,&quot;settings&quot;:{&quot;cookie_name&quot;:[&quot;pum-76795&quot;],&quot;delay&quot;:&quot;1500&quot;}},{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;,&quot;cookie_name&quot;:null}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;tiny&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:&quot;1&quot;,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}">
+
+	<div id="popmake-76795" class="pum-container popmake theme-59320 pum-responsive pum-responsive-tiny responsive size-tiny">
+
+				
+							<div id="pum_popup_title_76795" class="pum-title popmake-title">
+				Free Video Course: DL, Maths I &amp; Physics			</div>
+		
+		
+				<div class="pum-content popmake-content" tabindex="0">
+			<p><a href="https://hamronotes.com/courses" target="_blank"><img fetchpriority="high" decoding="async" class="alignnone size-full wp-image-81564" src="https://hamrocsit.com/wp-content/uploads/2026/05/Popup.jpg" alt="" width="1080" height="1350" /></a></p>
+		</div>
+
+				
+							<button type="button" class="pum-close popmake-close" aria-label="Close">
+			&times;			</button>
+		
+	</div>
+
+</div>
+		<script>window.addEventListener( 'load', function() {
+				document.querySelectorAll( 'link' ).forEach( function( e ) {'not all' === e.media && e.dataset.media && ( e.media = e.dataset.media, delete e.dataset.media );} );
+				var e = document.getElementById( 'jetpack-boost-critical-css' );
+				e && ( e.media = 'not all' );
+			} );</script>
+			<script type='text/javascript'>
+		(function () {
+			var c = document.body.className;
+			c = c.replace(/woocommerce-no-js/, 'woocommerce-js');
+			document.body.className = c;
+		})();
+	</script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js?ver=1.0" id="bootstrap-js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js?ver=1.0" id="domtoimage-js"></script>
+<script type="text/javascript" src="https://hamrocsit.com/wp-content/themes/tucsitnotes/assets/js/vanilla-toast.js?ver=1.0" id="toast-js"></script>
+<script type="text/javascript" id="tucsit-main-js-extra">
+/* <![CDATA[ */
+var tucsitnotes = {"ajax_url":"https://hamrocsit.com/wp-admin/admin-ajax.php","is_user_login":"","userid":"0","hassubscription":"0"};
+//# sourceURL=tucsit-main-js-extra
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://hamrocsit.com/wp-content/themes/tucsitnotes/assets/js/main.js?ver=1778839071" id="tucsit-main-js"></script>
+<script type="text/javascript" src="https://hamrocsit.com/wp-content/themes/tucsitnotes/assets/MathJax2/MathJax.js?config=TeX-AMS_CHTML&amp;ver=2.5.7" id="mathjax-script-js"></script>
+<script type="text/javascript" id="mathjax-script-js-after">
+/* <![CDATA[ */
+MathJax.Hub.Config({
+showMathMenu: false,
+CommonHTML: {
+scale: 100
+},
+"HTML-CSS" : {
+mtextFontInherit : true,
+linebreaks : { automatic: true }
+},
+SVG : {
+linebreaks : { automatic: true }
+}
+});
+//# sourceURL=mathjax-script-js-after
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://hamrocsit.com/wp-includes/js/dist/hooks.min.js?ver=dd5603f07f9220ed27f1" id="wp-hooks-js"></script>
+<script type="text/javascript" src="https://hamrocsit.com/wp-includes/js/dist/i18n.min.js?ver=c26c3dc7bed366793375" id="wp-i18n-js"></script>
+<script type="text/javascript" id="wp-i18n-js-after">
+/* <![CDATA[ */
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://hamrocsit.com/wp-includes/js/dist/url.min.js?ver=9e178c9516d1222dc834" id="wp-url-js"></script>
+<script type="text/javascript" src="https://hamrocsit.com/wp-includes/js/dist/api-fetch.min.js?ver=3a4d9af2b423048b0dee" id="wp-api-fetch-js"></script>
+<script type="text/javascript" id="wp-api-fetch-js-after">
+/* <![CDATA[ */
+wp.apiFetch.use( wp.apiFetch.createRootURLMiddleware( "https://hamrocsit.com/wp-json/" ) );
+wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware( "9e1b8ec8eb" );
+wp.apiFetch.use( wp.apiFetch.nonceMiddleware );
+wp.apiFetch.use( wp.apiFetch.mediaUploadMiddleware );
+wp.apiFetch.nonceEndpoint = "https://hamrocsit.com/wp-admin/admin-ajax.php?action=rest-nonce";
+//# sourceURL=wp-api-fetch-js-after
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://hamrocsit.com/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0" id="wp-polyfill-js"></script>
+<script type="text/javascript" src="https://hamrocsit.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/woocommerce-analytics/build/woocommerce-analytics-client.js?minify=false&amp;ver=3029a8acea36c7a0f986" id="woocommerce-analytics-client-js" defer="defer" data-wp-strategy="defer"></script>
+<script type="text/javascript" src="https://hamrocsit.com/wp-content/plugins/advanced-ads/admin/assets/js/advertisement.js" id="advanced-ads-find-adblocker-js"></script>
+<script type="text/javascript" src="https://hamrocsit.com/wp-content/plugins/woocommerce/assets/js/sourcebuster/sourcebuster.min.js?ver=10.3.4" id="sourcebuster-js-js"></script>
+<script type="text/javascript" id="wc-order-attribution-js-extra">
+/* <![CDATA[ */
+var wc_order_attribution = {"params":{"lifetime":1.0e-5,"session":30,"base64":false,"ajaxurl":"https://hamrocsit.com/wp-admin/admin-ajax.php","prefix":"wc_order_attribution_","allowTracking":true},"fields":{"source_type":"current.typ","referrer":"current_add.rf","utm_campaign":"current.cmp","utm_source":"current.src","utm_medium":"current.mdm","utm_content":"current.cnt","utm_id":"current.id","utm_term":"current.trm","utm_source_platform":"current.plt","utm_creative_format":"current.fmt","utm_marketing_tactic":"current.tct","session_entry":"current_add.ep","session_start_time":"current_add.fd","session_pages":"session.pgs","session_count":"udata.vst","user_agent":"udata.uag"}};
+//# sourceURL=wc-order-attribution-js-extra
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://hamrocsit.com/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js?ver=10.3.4" id="wc-order-attribution-js"></script>
+<script type="text/javascript" src="https://hamrocsit.com/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3" id="jquery-ui-core-js"></script>
+<script type="text/javascript" id="popup-maker-site-js-extra">
+/* <![CDATA[ */
+var pum_vars = {"version":"1.21.5","pm_dir_url":"https://hamrocsit.com/wp-content/plugins/popup-maker/","ajaxurl":"https://hamrocsit.com/wp-admin/admin-ajax.php","restapi":"https://hamrocsit.com/wp-json/pum/v1","rest_nonce":null,"default_theme":"59319","debug_mode":"","disable_tracking":"","home_url":"/","message_position":"top","core_sub_forms_enabled":"1","popups":[],"cookie_domain":"","analytics_enabled":"1","analytics_route":"analytics","analytics_api":"https://hamrocsit.com/wp-json/pum/v1"};
+var pum_sub_vars = {"ajaxurl":"https://hamrocsit.com/wp-admin/admin-ajax.php","message_position":"top"};
+var pum_popups = {"pum-76795":{"triggers":[{"type":"auto_open","settings":{"cookie_name":["pum-76795"],"delay":"1500"}}],"cookies":[{"event":"on_popup_close","settings":{"name":"pum-76795","key":"","session":null,"path":true,"time":"23 hours 59 minutes 59 seconds"}}],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"59320","size":"tiny","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":"0","close_on_overlay_click":false,"close_on_esc_press":true,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"lightbox","id":76795,"slug":"free-video-course-dl-maths-i-physics"}};
+//# sourceURL=popup-maker-site-js-extra
+/* ]]> */
+</script>
+<script type="text/javascript" src="//hamrocsit.com/wp-content/uploads/pum/pum-site-scripts.js?defer&amp;generated=1778673706&amp;ver=1.21.5" id="popup-maker-site-js"></script>
+<script type="text/javascript" src="https://hamrocsit.com/wp-content/plugins/enlighter/cache/enlighterjs.min.js?ver=iXB3MQ60o1ePvJN" id="enlighterjs-js"></script>
+<script type="text/javascript" id="enlighterjs-js-after">
+/* <![CDATA[ */
+!function(e,n){if("undefined"!=typeof EnlighterJS){var o={"selectors":{"block":"pre.EnlighterJSRAW","inline":"code.EnlighterJSRAW"},"options":{"indent":4,"ampersandCleanup":true,"linehover":true,"rawcodeDbclick":false,"textOverflow":"break","linenumbers":true,"theme":"dracula","language":"generic","retainCssClasses":false,"collapse":false,"toolbarOuter":"","toolbarTop":"{BTN_RAW}{BTN_COPY}{BTN_WINDOW}{BTN_WEBSITE}","toolbarBottom":""}};(e.EnlighterJSINIT=function(){EnlighterJS.init(o.selectors.block,o.selectors.inline,o.options)})()}else{(n&&(n.error||n.log)||function(){})("Error: EnlighterJS resources not loaded yet!")}}(window,console);
+//# sourceURL=enlighterjs-js-after
+/* ]]> */
+</script>
+<script type="text/javascript" id="jetpack-stats-js-before">
+/* <![CDATA[ */
+_stq = window._stq || [];
+_stq.push([ "view", JSON.parse("{\"v\":\"ext\",\"blog\":\"215186718\",\"post\":\"0\",\"tz\":\"5.75\",\"srv\":\"hamrocsit.com\",\"arch_home\":\"1\",\"j\":\"1:15.1.1\"}") ]);
+_stq.push([ "clickTrackerInit", "215186718", "0" ]);
+//# sourceURL=jetpack-stats-js-before
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://stats.wp.com/e-202621.js" id="jetpack-stats-js" defer="defer" data-wp-strategy="defer"></script>
+<script type="text/javascript">(function (undefined) {let scriptOptions={"_localizedStrings":{"redirect_overlay_title":"Hold On","redirect_overlay_text":"You are being redirected to another page,<br>it may take a few seconds.","webview_notification_text":"The selected provider doesn't support embedded browsers!"},"_targetWindow":"prefer-popup","_redirectOverlay":"overlay-with-spinner-and-message","_unsupportedWebviewBehavior":""};
+/**
+ * Used when Cross-Origin-Opener-Policy blocked the access to the opener. We can't have a reference of the opened windows, so we should attempt to refresh only the windows that has opened popups.
+ */
+window._nslHasOpenedPopup = false;
+window._nslWebViewNoticeElement = null;
+
+window.NSLPopup = function (url, title, w, h) {
+
+    /**
+     * Cross-Origin-Opener-Policy blocked the access to the opener
+     */
+    if (typeof BroadcastChannel === "function") {
+        const _nslLoginBroadCastChannel = new BroadcastChannel('nsl_login_broadcast_channel');
+        _nslLoginBroadCastChannel.onmessage = (event) => {
+            if (window?._nslHasOpenedPopup && event.data?.action === 'redirect') {
+                window._nslHasOpenedPopup = false;
+
+                const url = event.data?.href;
+                _nslLoginBroadCastChannel.close();
+                if (typeof window.nslRedirect === 'function') {
+                    window.nslRedirect(url);
+                } else {
+                    window.opener.location = url;
+                }
+            }
+        };
+    }
+
+    const userAgent = navigator.userAgent,
+        mobile = function () {
+            return /\b(iPhone|iP[ao]d)/.test(userAgent) ||
+                /\b(iP[ao]d)/.test(userAgent) ||
+                /Android/i.test(userAgent) ||
+                /Mobile/i.test(userAgent);
+        },
+        screenX = window.screenX !== undefined ? window.screenX : window.screenLeft,
+        screenY = window.screenY !== undefined ? window.screenY : window.screenTop,
+        outerWidth = window.outerWidth !== undefined ? window.outerWidth : document.documentElement.clientWidth,
+        outerHeight = window.outerHeight !== undefined ? window.outerHeight : document.documentElement.clientHeight - 22,
+        targetWidth = mobile() ? null : w,
+        targetHeight = mobile() ? null : h,
+        left = parseInt(screenX + (outerWidth - targetWidth) / 2, 10),
+        right = parseInt(screenY + (outerHeight - targetHeight) / 2.5, 10),
+        features = [];
+    if (targetWidth !== null) {
+        features.push('width=' + targetWidth);
+    }
+    if (targetHeight !== null) {
+        features.push('height=' + targetHeight);
+    }
+    features.push('left=' + left);
+    features.push('top=' + right);
+    features.push('scrollbars=1');
+
+    const newWindow = window.open(url, title, features.join(','));
+
+    if (window.focus) {
+        newWindow.focus();
+    }
+
+    window._nslHasOpenedPopup = true;
+
+    return newWindow;
+};
+
+let isWebView = null;
+
+function checkWebView() {
+    if (isWebView === null) {
+        function _detectOS(ua) {
+            if (/Android/.test(ua)) {
+                return "Android";
+            } else if (/iPhone|iPad|iPod/.test(ua)) {
+                return "iOS";
+            } else if (/Windows/.test(ua)) {
+                return "Windows";
+            } else if (/Mac OS X/.test(ua)) {
+                return "Mac";
+            } else if (/CrOS/.test(ua)) {
+                return "Chrome OS";
+            } else if (/Firefox/.test(ua)) {
+                return "Firefox OS";
+            }
+            return "";
+        }
+
+        function _detectBrowser(ua) {
+            let android = /Android/.test(ua);
+
+            if (/Opera Mini/.test(ua) || / OPR/.test(ua) || / OPT/.test(ua)) {
+                return "Opera";
+            } else if (/CriOS/.test(ua)) {
+                return "Chrome for iOS";
+            } else if (/Edge/.test(ua)) {
+                return "Edge";
+            } else if (android && /Silk\//.test(ua)) {
+                return "Silk";
+            } else if (/Chrome/.test(ua)) {
+                return "Chrome";
+            } else if (/Firefox/.test(ua)) {
+                return "Firefox";
+            } else if (android) {
+                return "AOSP";
+            } else if (/MSIE|Trident/.test(ua)) {
+                return "IE";
+            } else if (/Safari\//.test(ua)) {
+                return "Safari";
+            } else if (/AppleWebKit/.test(ua)) {
+                return "WebKit";
+            }
+            return "";
+        }
+
+        function _detectBrowserVersion(ua, browser) {
+            if (browser === "Opera") {
+                return /Opera Mini/.test(ua) ? _getVersion(ua, "Opera Mini/") :
+                    / OPR/.test(ua) ? _getVersion(ua, " OPR/") :
+                        _getVersion(ua, " OPT/");
+            } else if (browser === "Chrome for iOS") {
+                return _getVersion(ua, "CriOS/");
+            } else if (browser === "Edge") {
+                return _getVersion(ua, "Edge/");
+            } else if (browser === "Chrome") {
+                return _getVersion(ua, "Chrome/");
+            } else if (browser === "Firefox") {
+                return _getVersion(ua, "Firefox/");
+            } else if (browser === "Silk") {
+                return _getVersion(ua, "Silk/");
+            } else if (browser === "AOSP") {
+                return _getVersion(ua, "Version/");
+            } else if (browser === "IE") {
+                return /IEMobile/.test(ua) ? _getVersion(ua, "IEMobile/") :
+                    /MSIE/.test(ua) ? _getVersion(ua, "MSIE ")
+                        :
+                        _getVersion(ua, "rv:");
+            } else if (browser === "Safari") {
+                return _getVersion(ua, "Version/");
+            } else if (browser === "WebKit") {
+                return _getVersion(ua, "WebKit/");
+            }
+            return "0.0.0";
+        }
+
+        function _getVersion(ua, token) {
+            try {
+                return _normalizeSemverString(ua.split(token)[1].trim().split(/[^\w\.]/)[0]);
+            } catch (o_O) {
+            }
+            return "0.0.0";
+        }
+
+        function _normalizeSemverString(version) {
+            const ary = version.split(/[\._]/);
+            return (parseInt(ary[0], 10) || 0) + "." +
+                (parseInt(ary[1], 10) || 0) + "." +
+                (parseInt(ary[2], 10) || 0);
+        }
+
+        function _isWebView(ua, os, browser, version, options) {
+            switch (os + browser) {
+                case "iOSSafari":
+                    return false;
+                case "iOSWebKit":
+                    return _isWebView_iOS(options);
+                case "AndroidAOSP":
+                    return false;
+                case "AndroidChrome":
+                    return parseFloat(version) >= 42 ? /; wv/.test(ua) : /\d{2}\.0\.0/.test(version) ? true : _isWebView_Android(options);
+            }
+            return false;
+        }
+
+        function _isWebView_iOS(options) {
+            const document = (window["document"] || {});
+
+            if ("WEB_VIEW" in options) {
+                return options["WEB_VIEW"];
+            }
+            return !("fullscreenEnabled" in document || "webkitFullscreenEnabled" in document || false);
+        }
+
+        function _isWebView_Android(options) {
+            if ("WEB_VIEW" in options) {
+                return options["WEB_VIEW"];
+            }
+            return !("requestFileSystem" in window || "webkitRequestFileSystem" in window || false);
+        }
+
+        const options = {},
+            nav = window.navigator || {},
+            ua = nav.userAgent || "",
+            os = _detectOS(ua),
+            browser = _detectBrowser(ua),
+            browserVersion = _detectBrowserVersion(ua, browser);
+
+        isWebView = _isWebView(ua, os, browser, browserVersion, options);
+    }
+
+    return isWebView;
+}
+
+function isAllowedWebViewForUserAgent(provider) {
+    const facebookAllowedWebViews = [
+        'Instagram',
+        'FBAV',
+        'FBAN'
+    ];
+    let whitelist = [];
+
+    if (provider && provider === 'facebook') {
+        whitelist = facebookAllowedWebViews;
+    }
+
+    const nav = window.navigator || {},
+        ua = nav.userAgent || "";
+
+    if (whitelist.length && ua.match(new RegExp(whitelist.join('|')))) {
+        return true;
+    }
+
+    return false;
+}
+
+function disableButtonInWebView(providerButtonElement) {
+    if (providerButtonElement) {
+        providerButtonElement.classList.add('nsl-disabled-provider');
+        providerButtonElement.setAttribute('href', '#');
+
+        providerButtonElement.addEventListener('pointerdown', (e) => {
+            if (!window._nslWebViewNoticeElement) {
+                window._nslWebViewNoticeElement = document.createElement('div');
+                window._nslWebViewNoticeElement.id = "nsl-notices-fallback";
+                window._nslWebViewNoticeElement.addEventListener('pointerdown', function (e) {
+                    this.parentNode.removeChild(this);
+                    window._nslWebViewNoticeElement = null;
+                });
+                const webviewNoticeHTML = '<div class="error"><p>' + scriptOptions._localizedStrings.webview_notification_text + '</p></div>';
+
+                window._nslWebViewNoticeElement.insertAdjacentHTML("afterbegin", webviewNoticeHTML);
+                document.body.appendChild(window._nslWebViewNoticeElement);
+            }
+        });
+    }
+
+}
+
+window._nslDOMReady(function () {
+
+    window.nslRedirect = function (url) {
+        if (scriptOptions._redirectOverlay) {
+            const overlay = document.createElement('div');
+            overlay.id = "nsl-redirect-overlay";
+            let overlayHTML = '';
+            const overlayContainer = "<div id='nsl-redirect-overlay-container'>",
+                overlayContainerClose = "</div>",
+                overlaySpinner = "<div id='nsl-redirect-overlay-spinner'></div>",
+                overlayTitle = "<p id='nsl-redirect-overlay-title'>" + scriptOptions._localizedStrings.redirect_overlay_title + "</p>",
+                overlayText = "<p id='nsl-redirect-overlay-text'>" + scriptOptions._localizedStrings.redirect_overlay_text + "</p>";
+
+            switch (scriptOptions._redirectOverlay) {
+                case "overlay-only":
+                    break;
+                case "overlay-with-spinner":
+                    overlayHTML = overlayContainer + overlaySpinner + overlayContainerClose;
+                    break;
+                default:
+                    overlayHTML = overlayContainer + overlaySpinner + overlayTitle + overlayText + overlayContainerClose;
+                    break;
+            }
+
+            overlay.insertAdjacentHTML("afterbegin", overlayHTML);
+            document.body.appendChild(overlay);
+        }
+
+        window.location = url;
+    };
+
+    let targetWindow = scriptOptions._targetWindow || 'prefer-popup',
+        lastPopup = false;
+
+
+    document.addEventListener('click', function (e) {
+        if (e.target) {
+            const buttonLinkElement = e.target.closest('a[data-plugin="nsl"][data-action="connect"]') || e.target.closest('a[data-plugin="nsl"][data-action="link"]');
+            if (buttonLinkElement) {
+                if (lastPopup && !lastPopup.closed) {
+                    e.preventDefault();
+                    lastPopup.focus();
+                } else {
+
+                    let href = buttonLinkElement.href,
+                        success = false;
+                    if (href.indexOf('?') !== -1) {
+                        href += '&';
+                    } else {
+                        href += '?';
+                    }
+
+                    const redirectTo = buttonLinkElement.dataset.redirect;
+                    if (redirectTo === 'current') {
+                        href += 'redirect=' + encodeURIComponent(window.location.href) + '&';
+                    } else if (redirectTo && redirectTo !== '') {
+                        href += 'redirect=' + encodeURIComponent(redirectTo) + '&';
+                    }
+
+                    if (targetWindow !== 'prefer-same-window' && checkWebView()) {
+                        targetWindow = 'prefer-same-window';
+                    }
+
+                    if (targetWindow === 'prefer-popup') {
+                        lastPopup = NSLPopup(href + 'display=popup', 'nsl-social-connect', buttonLinkElement.dataset.popupwidth, buttonLinkElement.dataset.popupheight);
+                        if (lastPopup) {
+                            success = true;
+                            e.preventDefault();
+                        }
+                    } else if (targetWindow === 'prefer-new-tab') {
+                        const newTab = window.open(href + 'display=popup', '_blank');
+                        if (newTab) {
+                            if (window.focus) {
+                                newTab.focus();
+                            }
+                            success = true;
+                            window._nslHasOpenedPopup = true;
+                            e.preventDefault();
+                        }
+                    }
+
+                    if (!success) {
+                        window.location = href;
+                        e.preventDefault();
+                    }
+                }
+            }
+        }
+    });
+
+    let buttonCountChanged = false;
+
+    const googleLoginButtons = document.querySelectorAll(' a[data-plugin="nsl"][data-provider="google"]');
+    if (googleLoginButtons.length && checkWebView()) {
+        googleLoginButtons.forEach(function (googleLoginButton) {
+            if (scriptOptions._unsupportedWebviewBehavior === 'disable-button') {
+                disableButtonInWebView(googleLoginButton);
+            } else {
+                googleLoginButton.remove();
+                buttonCountChanged = true;
+            }
+        });
+    }
+
+    const facebookLoginButtons = document.querySelectorAll(' a[data-plugin="nsl"][data-provider="facebook"]');
+    if (facebookLoginButtons.length && checkWebView() && /Android/.test(window.navigator.userAgent) && !isAllowedWebViewForUserAgent('facebook')) {
+        facebookLoginButtons.forEach(function (facebookLoginButton) {
+            if (scriptOptions._unsupportedWebviewBehavior === 'disable-button') {
+                disableButtonInWebView(facebookLoginButton);
+            } else {
+                facebookLoginButton.remove();
+                buttonCountChanged = true;
+            }
+        });
+    }
+
+    const separators = document.querySelectorAll('div.nsl-separator');
+    if (buttonCountChanged && separators.length) {
+        separators.forEach(function (separator) {
+            const separatorParentNode = separator.parentNode;
+            if (separatorParentNode) {
+                const separatorButtonContainer = separatorParentNode.querySelector('div.nsl-container-buttons');
+                if (separatorButtonContainer && !separatorButtonContainer.hasChildNodes()) {
+                    separator.remove();
+                }
+            }
+        })
+    }
+});})();</script><script>!function(){window.advanced_ads_ready_queue=window.advanced_ads_ready_queue||[],advanced_ads_ready_queue.push=window.advanced_ads_ready;for(var d=0,a=advanced_ads_ready_queue.length;d<a;d++)advanced_ads_ready(advanced_ads_ready_queue[d])}();</script>		<script type="text/javascript">
+			(function() {
+				window.wcAnalytics = window.wcAnalytics || {};
+				const wcAnalytics = window.wcAnalytics;
+
+				// Set common properties for all events.
+				wcAnalytics.commonProps = {"blog_id":215186718,"store_id":"658566c9-c05c-46f8-b6b1-dbe20097c317","ui":null,"url":"https:\/\/hamrocsit.com","woo_version":"10.3.4","wp_version":"6.9.4","store_admin":0,"device":"desktop","store_currency":"NPR","timezone":"+05:45","is_guest":1};
+
+				// Set the event queue.
+				wcAnalytics.eventQueue = [];
+
+				// Features.
+				wcAnalytics.features = {
+					ch: false,
+					sessionTracking: false,
+					proxy: false,
+				};
+
+				wcAnalytics.breadcrumbs = [""];
+
+				// Page context flags.
+				wcAnalytics.pages = {
+					isAccountPage: false,
+					isCart: false,
+				};
+			})();
+		</script>
+		    <script src="https://accounts.google.com/gsi/client" async defer ></script>
+    <script>
+        let redirectToApp = false;
+        function onOneTapSignedIn(googleUser){
+            jQuery.post(tucsitnotes.ajax_url, {
+                "id_token" : googleUser.credential,
+                "action" : "validate_user_onetap"
+            }, function(r){
+                if( r.success ){
+                    if( redirectToApp ){
+                        window.location.href = `https://hamrocsit.com/wp-content/themes/tucsitnotes/template/notification/applogin_error.php`;
+                        return true;
+                    }
+                    
+                    vt.success(r.message, {
+                        position: "bottom-center"
+                    });
+                    
+                    setTimeout(() => {
+                        window.location.href = window.location.href;
+                    }, 1000)   
+                }else{
+                    vt.error(r.message, {
+                        position: "bottom-center"
+                    });
+                }
+            }, 'json').fail(function(xhr, status, error){
+                vt.error(xhr.responseText, {
+                    position: "bottom-center"
+                });
+            })
+        }
+    
+        window.onGoogleLibraryLoad = () => {
+        google.accounts.id.initialize({
+            client_id:'648137761823-38lfu0bbes2ko940uf0o4s6fcq33c500.apps.googleusercontent.com',
+            callback: onOneTapSignedIn
+        });
+        google.accounts.id.prompt((notification) => {
+            // if (notification.isNotDisplayed()) {
+            //     console.log(notification.getNotDisplayedReason());
+            // } else if (notification.isSkippedMoment()) {
+            //     console.log(notification.getSkippedReason());
+            // } else if (notification.isDismissedMoment()) {
+            //     console.log(notification.getDismissedReason());
+            // } else {
+                
+            // }
+        });
+    }
+    </script>
+    
+<div class="print_watermark">HAMROCSIT.COM</div>
+
+<div class="print_footer">
+    <p>Copyright 2024 | <a href="https://hamrocsit.com">HAMROCSIT.COM</a> | All Right Reserved - Nymna Technology</p>
+</div>
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9fd95f75cf89e0ab',t:'MTc3OTA5MTY5NQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+
+</html>
