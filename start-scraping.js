@@ -19,6 +19,7 @@ const { chromium } = require("playwright");
 const fs           = require("fs");
 const readline     = require("readline");
 const { execSync } = require("child_process");
+const inquirer     = require("inquirer");
 
 const SITE     = "https://hamrocsit.com";
 const DELAY_MS = 2000;
@@ -45,70 +46,28 @@ function prompt(question) {
 async function selectSubjects(subjects) {
   if (subjects.length === 0) return [];
   
-  console.log("\n✔ Select subjects to process:");
-  console.log("");
-  
-  subjects.forEach((s, i) => {
-    console.log(`  ${i + 1}. ${s.slug}`);
-  });
-  
-  console.log("");
-  console.log("  Examples: '1 3 5'  or  '1-5'  or  'all' (default)");
-  console.log("");
-  
-  while (true) {
-    const input = await prompt("? Choice: ");
-    
-    // Default to 'all' on empty input
-    if (input === "") {
-      return subjects;
-    }
-    
-    if (input.toLowerCase() === "all") {
-      return subjects;
-    }
-    
-    if (input.toLowerCase() === "none") {
-      return [];
-    }
-    
-    let indices = [];
-    
-    // Handle range syntax like "1-5"
-    const parts = input.split(/[\s,]+/);
-    for (const part of parts) {
-      if (part.includes("-")) {
-        const [start, end] = part.split("-").map(x => parseInt(x.trim(), 10));
-        if (!isNaN(start) && !isNaN(end)) {
-          for (let i = Math.min(start, end); i <= Math.max(start, end); i++) {
-            indices.push(i - 1);
-          }
+  const choices = subjects.map(s => ({
+    name: s.slug,
+    value: s,
+    checked: true  // All checked by default
+  }));
+
+  const answers = await inquirer.prompt([
+    {
+      type: "checkbox",
+      name: "selected",
+      message: "Select subjects to process:",
+      choices: choices,
+      validate: (answer) => {
+        if (answer.length === 0) {
+          return "Select at least one subject (or press Ctrl+C to cancel)";
         }
-      } else {
-        const idx = parseInt(part, 10);
-        if (!isNaN(idx)) {
-          indices.push(idx - 1);
-        }
+        return true;
       }
     }
-    
-    // Remove duplicates
-    indices = [...new Set(indices)];
-    
-    if (indices.length === 0) {
-      console.log("  ✗ Invalid input. Try: 1 3 5 or 1-5 or all");
-      continue;
-    }
-    
-    if (indices.some(i => i < 0 || i >= subjects.length)) {
-      console.log(`  ✗ Numbers must be between 1 and ${subjects.length}`);
-      continue;
-    }
-    
-    const selected = indices.map(i => subjects[i]);
-    console.log(`  ✔ Selected: ${selected.map(s => s.slug).join(", ")}\n`);
-    return selected;
-  }
+  ]);
+
+  return answers.selected;
 }
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
