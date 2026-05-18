@@ -331,7 +331,7 @@ Rules:
   but no data rows.
 - Within each topic table, sort rows by year descending (newest
   first). Model sets come last.
-- Topic column (last column) must contain the topic code and name (e.g., "1.1 Introduction to SPM")
+- Topic column (last column) must contain the topic code and full topic name. If a topic has multiple comma-separated sub-topics, bold the specific sub-topic(s) that the question targets using **bold** markdown. Example: "1.4 Concurrency: Introduction, Thread States, Writing Multithreaded Programs, Thread Properties, **Thread Synchronization**, Thread Priorities" if the question specifically addresses Thread Synchronization.
 - Q# is the original question number from that paper (e.g. Q4, Q11).
 - Year is the paper label (e.g. 2081, Model Set II).
 - Question text must be copied exactly — do not summarize or shorten.
