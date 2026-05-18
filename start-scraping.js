@@ -48,7 +48,7 @@ async function selectSubjects(subjects) {
   
   const choices = subjects.map(s => ({
     name: s.slug,
-    value: s,
+    value: s.slug,
     checked: true  // All checked by default
   }));
 
@@ -56,18 +56,19 @@ async function selectSubjects(subjects) {
     {
       type: "checkbox",
       name: "selected",
-      message: "Select subjects to process:",
+      message: "Select subjects to process (use arrow keys, space to toggle, enter to confirm):",
       choices: choices,
-      validate: (answer) => {
-        if (answer.length === 0) {
-          return "Select at least one subject (or press Ctrl+C to cancel)";
-        }
-        return true;
-      }
+      pageSize: subjects.length + 1
     }
   ]);
 
-  return answers.selected;
+  if (answers.selected.length === 0) {
+    console.log("No subjects selected. Cancelling.");
+    process.exit(0);
+  }
+
+  // Map selected slugs back to subject objects
+  return subjects.filter(s => answers.selected.includes(s.slug));
 }
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
