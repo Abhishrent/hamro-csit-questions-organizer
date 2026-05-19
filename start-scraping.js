@@ -3,25 +3,28 @@
 // ============================================================
 // SETUP (one time):
 //   npm init -y
-//   npm install playwright
+//   npm install playwright chalk
 //   npx playwright install chromium
 //
 // RUN:
-//   node hamrocsit_scraper.js
-//   → prompts: "Enter semester number (1-8):"
+//   node start-scraping.js
 //
 // OUTPUT:
 //   output/<semester-word>/<subject-slug>.txt
 //   One file per subject, sorted by year, model questions marked
 // ============================================================
 
+"use strict";
+
 const { chromium } = require("playwright");
 const fs           = require("fs");
 const readline     = require("readline");
 const path         = require("path");
 const os           = require("os");
-const { execSync } = require("child_process");
-const inquirer     = require("inquirer").default;
+const { execSync, execFile } = require("child_process");
+const util          = require("util");
+const execFileAsync = util.promisify(execFile);
+const chalk         = require("chalk");
 
 const SITE     = "https://hamrocsit.com";
 const DELAY_MS = 2000;
@@ -38,41 +41,406 @@ const SEMESTER_WORDS = {
   8: "eight",   // site spells it "eight", not "eighth"
 };
 
-// ── Prompt helper ─────────────────────────────────────────────
-function prompt(question) {
-  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-  return new Promise(resolve => rl.question(question, ans => { rl.close(); resolve(ans.trim()); }));
+// ── Strip ANSI codes to get visual length ─────────────────────
+const visualLen = (s) => s.replace(/\x1b\[[0-9;]*m/g, "").length;
+
+// ── Draw a box line padded to terminal width ──────────────────
+const boxLine = (inner, W) => {
+  const pad = Math.max(0, W - 2 - visualLen(inner));
+  return `${chalk.cyan("│")}${inner}${" ".repeat(pad)}${chalk.cyan("│")}\n`;
+};
+
+// ── TUI Config Screen ─────────────────────────────────────────
+async function runConfigScreen() {
+  readline.emitKeypressEvents(process.stdin);
+  if (process.stdin.isTTY) process.stdin.setRawMode(true);
+
+  // Enter alternate screen buffer, hide cursor
+  process.stdout.write("\x1b[?1049h\x1b[?25l");
+
+  const MODES = [
+    { id: "qbanks",   label: "Question Banks only"              },
+    { id: "syllabus", label: "Syllabus only"                    },
+    { id: "both",     label: "Question Banks + Syllabus"        },
+    { id: "organize", label: "Organize Questions (AI-assisted)" },
+  ];
+
+  const fields = [
+    { id: "semester", label: "Semester",    type: "number", value: 1, min: 1, max: 8 },
+    { id: "mode",     label: "Scrape mode", type: "list",   value: 0, options: MODES },
+  ];
+
+  let activeIdx = 0;
+  let errorMsg  = "";
+
+  const render = () => {
+    const W = process.stdout.columns || 80;
+    const H = process.stdout.rows    || 24;
+
+    if (W < 72 || H < 18) {
+      process.stdout.write("\x1b[H\x1b[2J");
+      process.stdout.write(`\n  ${chalk.bold.yellow("▲ Terminal too small — resize to at least 72×18")}\n`);
+      return;
+    }
+
+    let out = "\x1b[H";
+
+    const title     = " HAMRO CSIT SCRAPER ";
+    const topPad    = Math.max(0, W - 6 - visualLen(title));
+    out += chalk.cyan("╭────" + chalk.bold.white(title) + "─".repeat(topPad) + "╮") + "\n";
+
+    const hint = chalk.dim(" ↑/↓ navigate  ←/→ or +/- change value  Enter confirm ");
+    out += boxLine(" " + hint, W);
+    out += chalk.cyan("├" + "─".repeat(W - 2) + "┤") + "\n";
+    out += boxLine("", W);
+
+    for (let i = 0; i < fields.length; i++) {
+      const f        = fields[i];
+      const active   = i === activeIdx;
+      const labelStr = (active ? chalk.bold.cyan : chalk.white)(f.label.padEnd(18));
+
+      let valStr = "";
+      if (f.type === "number") {
+        const display = `Semester ${f.value}  (${SEMESTER_WORDS[f.value]})`;
+        valStr = active
+          ? chalk.bgCyan.black(` ◀ ${display.padEnd(28)} ▶ `)
+          : chalk.gray(`< ${display.padEnd(28)} >`);
+      } else if (f.type === "list") {
+        const opt = f.options[f.value];
+        valStr = active
+          ? chalk.bgCyan.black(` ◀ ${opt.label.padEnd(34)} ▶ `)
+          : chalk.gray(`< ${opt.label.padEnd(34)} >`);
+      }
+
+      out += boxLine(`    ${labelStr}  ${valStr}`, W);
+      out += boxLine("", W);
+    }
+
+    // Submit button
+    const btnText  = " START SCRAPING ";
+    const btnRaw   = activeIdx === fields.length
+      ? chalk.bgGreen.bold.black(btnText)
+      : chalk.bold.gray(btnText);
+    const btnPad   = Math.floor((W - 4 - visualLen(btnText)) / 2);
+    out += boxLine(" ".repeat(Math.max(0, btnPad)) + btnRaw, W);
+    out += boxLine("", W);
+
+    if (errorMsg) {
+      out += boxLine("  " + chalk.bgRed.bold.white(`  ▲ ${errorMsg}  `), W);
+    }
+
+    // Fill remaining rows
+    const drawnLines = 6 + fields.length * 2 + 3 + (errorMsg ? 1 : 0);
+    for (let r = drawnLines; r < H - 2; r++) out += boxLine("", W);
+
+    const footer    = chalk.dim(" Hamro CSIT Scraper • Configuration ");
+    const footerPad = Math.max(0, W - 6 - visualLen(footer));
+    out += chalk.cyan("╰────" + footer + "─".repeat(footerPad) + "╯");
+
+    process.stdout.write(out);
+  };
+
+  // Handle terminal resize
+  const onResize = () => render();
+  process.stdout.on("resize", onResize);
+
+  render();
+
+  return new Promise((resolve) => {
+    const onKey = (str, key) => {
+      if (key.ctrl && key.name === "c") {
+        process.stdout.write("\x1b[?1049l\x1b[?25h");
+        process.exit(0);
+      }
+
+      errorMsg = "";
+      const totalItems = fields.length + 1; // fields + submit button
+
+      if (key.name === "up") {
+        activeIdx = Math.max(0, activeIdx - 1);
+      } else if (key.name === "down") {
+        activeIdx = Math.min(totalItems - 1, activeIdx + 1);
+      } else if (key.name === "return") {
+        if (activeIdx === fields.length) {
+          // Submit
+          process.stdin.removeListener("keypress", onKey);
+          process.stdout.removeListener("resize", onResize);
+          resolve({
+            semester: fields[0].value,
+            modeId:   fields[1].options[fields[1].value].id,
+          });
+          return;
+        } else {
+          activeIdx = Math.min(totalItems - 1, activeIdx + 1);
+        }
+      } else if (key.name === "left" || str === "-") {
+        const f = fields[activeIdx];
+        if (!f) return render();
+        if (f.type === "number") f.value = Math.max(f.min, f.value - 1);
+        if (f.type === "list")   f.value = (f.value - 1 + f.options.length) % f.options.length;
+      } else if (key.name === "right" || str === "+") {
+        const f = fields[activeIdx];
+        if (!f) return render();
+        if (f.type === "number") f.value = Math.min(f.max, f.value + 1);
+        if (f.type === "list")   f.value = (f.value + 1) % f.options.length;
+      }
+
+      render();
+    };
+
+    process.stdin.on("keypress", onKey);
+  });
 }
 
-// ── Multi-select subjects helper ──────────────────────────────
-async function selectSubjects(subjects) {
-  if (subjects.length === 0) return [];
-  
-  const choices = subjects.map(s => ({
-    name: s.slug,
-    value: s.slug,
-    checked: true  // All checked by default
-  }));
+// ── TUI Dashboard ─────────────────────────────────────────────
+const SPINNER = ["⠋","⠙","⠹","⠸","⠼","⠴","⠦","⠧","⠇","⠏"];
+let spinIdx = 0;
+let spinTimer = null;
 
-  const answers = await inquirer.prompt([
-    {
-      type: "checkbox",
-      name: "selected",
-      message: "Select subjects to process:",
-      choices: choices,
-      pageSize: subjects.length + 1,
-      searchable: false,
-      highlight: true
+const dashState = {
+  subjects:    {},   // slug → { qbankStatus, syllabusStatus, qbankCount, error }
+  activeSlug:  null,
+  activeTask:  "",
+  phase:       "scraping", // "scraping" | "done"
+  totalDone:   0,
+  totalCount:  0,
+};
+
+function renderDashboard(subjectSlugs, semesterWord, modeId) {
+  const W = process.stdout.columns || 80;
+  const H = process.stdout.rows    || 24;
+
+  const scrapeQBanks  = modeId === "qbanks"   || modeId === "both";
+  const scrapeSyllabus = modeId === "syllabus" || modeId === "both";
+  const isOrganize    = modeId === "organize";
+
+  const fmtStatus = (status) => {
+    if (!status || status === "pending") return chalk.dim("Pending");
+    if (status === "active")             return chalk.bold.cyan("Active ");
+    if (status === "done")               return chalk.green("Done   ");
+    if (status === "skipped")            return chalk.yellow("Skipped");
+    if (status === "error")              return chalk.red("Error  ");
+    return chalk.dim("─      ");
+  };
+
+  let out = "\x1b[H";
+
+  const title    = " HAMRO CSIT SCRAPER — LIVE ";
+  const topPad   = Math.max(0, W - 6 - visualLen(title));
+  out += chalk.cyan("╭────" + chalk.bold.magenta(title) + "─".repeat(topPad) + "╮") + "\n";
+
+  const modeLabel = isOrganize ? "Organize" : `${modeId}`;
+  const sub = ` ${chalk.dim("Semester:")} ${chalk.yellow(semesterWord)}  ${chalk.dim("Mode:")} ${chalk.white(modeLabel)}  ${chalk.dim("Progress:")} ${chalk.green(dashState.totalDone + "/" + dashState.totalCount)} `;
+  out += boxLine(sub, W);
+  out += chalk.cyan("├" + "─".repeat(W - 2) + "┤") + "\n";
+
+  // Active task line
+  out += boxLine("  " + chalk.bold.white("CURRENT TASK"), W);
+  const spinPrefix = dashState.activeSlug ? SPINNER[spinIdx] + " " : "";
+  const taskLine = dashState.activeSlug
+    ? chalk.cyan(`[${dashState.activeSlug}] `) + chalk.white(spinPrefix + dashState.activeTask)
+    : chalk.dim(dashState.activeTask || "");
+  out += boxLine("    " + taskLine, W);
+  out += chalk.cyan("├" + "─".repeat(W - 2) + "┤") + "\n";
+
+  // Per-subject rows
+  out += boxLine("  " + chalk.bold.white("SUBJECTS"), W);
+
+  for (const slug of subjectSlugs) {
+    const s = dashState.subjects[slug] || {};
+    const isActive = dashState.activeSlug === slug;
+    const nameStr  = (isActive ? chalk.bold.cyan : chalk.white)(slug.padEnd(28).slice(0, 28));
+
+    let colParts = [];
+    if (scrapeQBanks || isOrganize) {
+      colParts.push(`QB: ${fmtStatus(s.qbankStatus)}`);
     }
-  ]);
+    if (scrapeSyllabus) {
+      colParts.push(`SY: ${fmtStatus(s.syllabusStatus)}`);
+    }
+    if (s.qbankCount !== undefined) {
+      colParts.push(chalk.dim(`${s.qbankCount}q`));
+    }
+    if (s.error) {
+      colParts.push(chalk.red("✖ " + s.error.slice(0, 20)));
+    }
 
-  if (answers.selected.length === 0) {
-    console.log("No subjects selected. Cancelling.");
-    process.exit(0);
+    const cols = colParts.join("  ");
+    const rowPad = Math.max(0, W - 8 - visualLen(nameStr) - visualLen(cols));
+    out += boxLine(`  ◆ ${nameStr}${" ".repeat(rowPad)}${cols}`, W);
   }
 
-  // Map selected slugs back to subject objects
-  return subjects.filter(s => answers.selected.includes(s.slug));
+  // Fill space
+  const drawnLines = 7 + subjectSlugs.length + 1;
+  for (let r = drawnLines; r < H - 3; r++) out += boxLine("", W);
+
+  out += chalk.cyan("├" + "─".repeat(W - 2) + "┤") + "\n";
+
+  // Bottom status
+  const bottomMsg = dashState.phase === "done"
+    ? chalk.green.bold("✔ Complete! Press any key to exit.")
+    : chalk.dim(" Press Ctrl+C to abort ");
+  out += boxLine("  " + bottomMsg, W);
+
+  const footer    = chalk.dim(" Hamro CSIT Scraper • Running ");
+  const footerPad = Math.max(0, W - 6 - visualLen(footer));
+  out += chalk.cyan("╰────" + footer + "─".repeat(footerPad) + "╯");
+
+  process.stdout.write(out);
+}
+
+function startDashboard(subjectSlugs, semesterWord, modeId) {
+  process.stdout.write("\x1b[2J\x1b[H");
+  renderDashboard(subjectSlugs, semesterWord, modeId);
+  spinTimer = setInterval(() => {
+    spinIdx = (spinIdx + 1) % SPINNER.length;
+    renderDashboard(subjectSlugs, semesterWord, modeId);
+  }, 80);
+}
+
+function stopDashboard() {
+  if (spinTimer) { clearInterval(spinTimer); spinTimer = null; }
+}
+
+function setTask(slug, text) {
+  dashState.activeSlug = slug;
+  dashState.activeTask = text; // plain text — spinner prepended at render time
+}
+
+function setSubjectStatus(slug, field, value) {
+  if (!dashState.subjects[slug]) dashState.subjects[slug] = {};
+  dashState.subjects[slug][field] = value;
+}
+
+// ── Loading / status screen shown while browser warms up ─────
+function renderLoadingScreen(message) {
+  const W = process.stdout.columns || 80;
+  const H = process.stdout.rows    || 24;
+
+  let out = "\x1b[H";
+
+  const title  = " HAMRO CSIT SCRAPER ";
+  const topPad = Math.max(0, W - 6 - visualLen(title));
+  out += chalk.cyan("╭────" + chalk.bold.white(title) + "─".repeat(topPad) + "╮") + "\n";
+
+  for (let i = 1; i < H - 3; i++) {
+    if (i === Math.floor((H - 3) / 2)) {
+      out += boxLine("  " + chalk.bold.cyan(message), W);
+    } else {
+      out += boxLine("", W);
+    }
+  }
+
+  const footer    = chalk.dim(" Please wait... ");
+  const footerPad = Math.max(0, W - 6 - visualLen(footer));
+  out += chalk.cyan("╰────" + footer + "─".repeat(footerPad) + "╯");
+
+  process.stdout.write(out);
+}
+
+// ── TUI subject selector (keyboard-driven checkbox) ───────────
+async function selectSubjects(subjects) {
+  if (subjects.length === 0) return [];
+
+  const checked = new Array(subjects.length).fill(true);
+  let cursorIdx = 0;
+  const PAGE_SIZE = Math.min(subjects.length, (process.stdout.rows || 24) - 10);
+  let scrollOffset = 0;
+
+  const render = () => {
+    const W = process.stdout.columns || 80;
+    const H = process.stdout.rows    || 24;
+
+    let out = "\x1b[H";
+
+    const title  = " SELECT SUBJECTS ";
+    const topPad = Math.max(0, W - 6 - visualLen(title));
+    out += chalk.cyan("╭────" + chalk.bold.white(title) + "─".repeat(topPad) + "╮") + "\n";
+
+    const hint = chalk.dim(" ↑/↓ move  Space toggle  A select all  N deselect all  Enter confirm ");
+    out += boxLine(" " + hint, W);
+    out += chalk.cyan("├" + "─".repeat(W - 2) + "┤") + "\n";
+
+    const selectedCount = checked.filter(Boolean).length;
+    out += boxLine("  " + chalk.bold.white("Subjects found: ") + chalk.cyan(subjects.length) + "   " + chalk.bold.white("Selected: ") + chalk.green(selectedCount), W);
+    out += boxLine("", W);
+
+    if (cursorIdx < scrollOffset) scrollOffset = cursorIdx;
+    if (cursorIdx >= scrollOffset + PAGE_SIZE) scrollOffset = cursorIdx - PAGE_SIZE + 1;
+
+    const visibleSubjects = subjects.slice(scrollOffset, scrollOffset + PAGE_SIZE);
+
+    for (let i = 0; i < visibleSubjects.length; i++) {
+      const realIdx   = i + scrollOffset;
+      const isActive  = realIdx === cursorIdx;
+      const isChecked = checked[realIdx];
+
+      const checkbox  = isChecked ? chalk.green("◉") : chalk.dim("◎");
+      const nameColor = isActive ? chalk.bgCyan.black : (isChecked ? chalk.white : chalk.dim);
+      const arrow     = isActive ? chalk.cyan(" ▶ ") : "   ";
+      const name      = nameColor(subjects[realIdx].slug.padEnd(W - 12));
+
+      out += boxLine(arrow + checkbox + "  " + name, W);
+    }
+
+    if (subjects.length > PAGE_SIZE) {
+      const pct = Math.round((scrollOffset / Math.max(1, subjects.length - PAGE_SIZE)) * 100);
+      out += boxLine(chalk.dim("  ↕  Showing " + (scrollOffset + 1) + "–" + Math.min(scrollOffset + PAGE_SIZE, subjects.length) + " of " + subjects.length + "  (" + pct + "%)"), W);
+    }
+
+    const drawnLines = 5 + visibleSubjects.length + (subjects.length > PAGE_SIZE ? 1 : 0) + 2;
+    for (let r = drawnLines; r < H - 3; r++) out += boxLine("", W);
+
+    const selectedCount2 = checked.filter(Boolean).length;
+    const btnText  = selectedCount2 > 0
+      ? " START WITH " + selectedCount2 + " SUBJECT" + (selectedCount2 > 1 ? "S" : "") + " "
+      : " NO SUBJECTS SELECTED ";
+    const btnColor = selectedCount2 > 0 ? chalk.bgGreen.bold.black : chalk.bgRed.bold.white;
+    const btnPad   = Math.floor((W - 4 - btnText.length) / 2);
+    out += chalk.cyan("├" + "─".repeat(W - 2) + "┤") + "\n";
+    out += boxLine(" ".repeat(Math.max(0, btnPad)) + btnColor(btnText), W);
+
+    const footer    = chalk.dim(" Hamro CSIT Scraper • Subject Selection ");
+    const footerPad = Math.max(0, W - 6 - visualLen(footer));
+    out += chalk.cyan("╰────" + footer + "─".repeat(footerPad) + "╯");
+
+    process.stdout.write(out);
+  };
+
+  process.stdout.on("resize", render);
+  render();
+
+  return new Promise((resolve) => {
+    const onKey = (str, key) => {
+      if (key.ctrl && key.name === "c") {
+        process.stdout.write("\x1b[?1049l\x1b[?25h");
+        process.exit(0);
+      }
+
+      if (key.name === "up") {
+        cursorIdx = Math.max(0, cursorIdx - 1);
+      } else if (key.name === "down") {
+        cursorIdx = Math.min(subjects.length - 1, cursorIdx + 1);
+      } else if (str === " ") {
+        checked[cursorIdx] = !checked[cursorIdx];
+      } else if (str === "a" || str === "A") {
+        checked.fill(true);
+      } else if (str === "n" || str === "N") {
+        checked.fill(false);
+      } else if (key.name === "return") {
+        const selectedCount = checked.filter(Boolean).length;
+        if (selectedCount === 0) { render(); return; }
+        process.stdin.removeListener("keypress", onKey);
+        process.stdout.removeListener("resize", render);
+        resolve(subjects.filter((_, i) => checked[i]));
+        return;
+      }
+
+      render();
+    };
+
+    process.stdin.on("keypress", onKey);
+  });
 }
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
@@ -290,7 +658,7 @@ async function extractQuestions(page) {
   return fromDom.filter(q => q.length > 5);
 }
 
-// ── Organize Questions using AI ──────────────────────────────
+// ── Organize Questions using AI ──────────────────────────
 
 async function organizeQuestions(semNum, semesterWord) {
   const classificationPrompt = `You are a university exam question organizer.
@@ -352,174 +720,172 @@ QUESTION BANK:
   const SYLLABUS_DIR = path.join("output", semesterWord, "syllabus");
   const ORG_DIR      = path.join("output", semesterWord, "organized");
 
-  // Create output directory if it doesn't exist
   fs.mkdirSync(ORG_DIR, { recursive: true });
 
-  // Get all question bank files
+  // ── Check question bank directory exists ─────────────────────
   let qbankFiles;
   try {
     qbankFiles = fs.readdirSync(QBANK_DIR).filter(f => f.endsWith(".md"));
   } catch (err) {
-    console.log(`Error: Could not read question bank directory (${QBANK_DIR})`);
-    return;
+    renderLoadingScreen("✖  No question bank directory found: " + QBANK_DIR);
+    await new Promise(r => setTimeout(r, 3000));
+    process.stdout.write("\x1b[?1049l\x1b[?25h");
+    process.exit(1);
   }
 
   if (!qbankFiles.length) {
-    console.log(`No question bank files found in ${QBANK_DIR}`);
-    return;
+    renderLoadingScreen("✖  No .md files found in: " + QBANK_DIR);
+    await new Promise(r => setTimeout(r, 3000));
+    process.stdout.write("\x1b[?1049l\x1b[?25h");
+    process.exit(1);
   }
 
-  console.log(`Found ${qbankFiles.length} subject(s).`);
-
-  // ── Let user select which subjects to organize ───────────────
+  // ── TUI subject selection (stdin already in raw mode from config screen) ─
   const subjects = qbankFiles.map(f => ({ slug: f.replace(".md", ""), name: f.replace(".md", "") }));
   const selectedSubjects = await selectSubjects(subjects);
-  
+
   if (!selectedSubjects.length) {
-    console.log("No subjects selected. Cancelling.");
-    return;
+    process.stdout.write("\x1b[?1049l\x1b[?25h");
+    process.exit(0);
   }
 
-  console.log(`Organizing ${selectedSubjects.length} subject(s).`);
+  // ── Init organize dashboard ───────────────────────────────────
+  for (const { slug } of selectedSubjects) {
+    dashState.subjects[slug] = { qbankStatus: "pending", syllabusStatus: null };
+  }
+  dashState.totalCount = selectedSubjects.length;
+
+  const subjectSlugs = selectedSubjects.map(s => s.slug);
+  const onResize = () => renderDashboard(subjectSlugs, semesterWord, "organize");
+  process.stdout.on("resize", onResize);
+  startDashboard(subjectSlugs, semesterWord, "organize");
 
   let skipped = 0;
   let processed = 0;
 
   for (const { slug } of selectedSubjects) {
-    const qbankFile = `${slug}.md`;
-    const qbankPath = path.join(QBANK_DIR, qbankFile);
+    const qbankPath    = path.join(QBANK_DIR,    `${slug}.md`);
     const syllabusPath = path.join(SYLLABUS_DIR, `${slug}.md`);
 
-    // Check if both files exist
+    setSubjectStatus(slug, "qbankStatus", "active");
+
     if (!fs.existsSync(syllabusPath)) {
-      console.log(`  ⚠  [${slug}] Skipped: syllabus file not found at ${syllabusPath}`);
-      skipped++;
+      setTask(slug, "Skipped: syllabus not found");
+      setSubjectStatus(slug, "qbankStatus", "skipped");
+      setSubjectStatus(slug, "error", "no syllabus");
+      skipped++; dashState.totalDone++; dashState.activeSlug = null;
       continue;
     }
-
     if (!fs.existsSync(qbankPath)) {
-      console.log(`  ⚠  [${slug}] Skipped: question bank file not found at ${qbankPath}`);
-      skipped++;
+      setTask(slug, "Skipped: question bank not found");
+      setSubjectStatus(slug, "qbankStatus", "skipped");
+      setSubjectStatus(slug, "error", "no qbank");
+      skipped++; dashState.totalDone++; dashState.activeSlug = null;
       continue;
     }
-
-    console.log(`\n  Processing [${slug}]...`);
 
     try {
-      // Read both files
-      const syllabusContent = fs.readFileSync(syllabusPath, "utf8");
+      setTask(slug, "Reading files...");
+      const syllabusContent  = fs.readFileSync(syllabusPath, "utf8");
       const questionsContent = fs.readFileSync(qbankPath, "utf8");
 
-      // Prepare the prompt
       const fullPrompt = classificationPrompt
         .replace("{{SYLLABUS}}", syllabusContent)
         .replace("{{QUESTIONS}}", questionsContent);
 
-      // Call Gemini CLI
-      console.log(`    Calling Gemini CLI...`);
-      
-      // Write prompt to temporary file
-      const tmpFile = path.join(os.tmpdir(), `gemini_prompt_${slug}_${Date.now()}.txt`);
-      fs.writeFileSync(tmpFile, fullPrompt, "utf8");
-      
+      setTask(slug, "Mapping Questions to Syllabus Topics...");
+
       try {
-        // Call gemini CLI with the prompt file content via stdin
-        const promptContent = fs.readFileSync(tmpFile, "utf8");
-        const result = execSync(`gemini -p ""`, {
-          input: promptContent,
+        const result = await execFileAsync("gemini", ["-p", fullPrompt], {
           encoding: "utf8",
           maxBuffer: 10 * 1024 * 1024
         });
-        
-        // Clean up temp file
-        fs.unlinkSync(tmpFile);
+        const stdout = typeof result === "string" ? result : result.stdout;
 
-        // Prepare output with header
         const timestamp = new Date().toLocaleString();
         const header = `# ${slug} — Organized by Syllabus Unit\n**Semester:** ${semNum} | **Generated:** ${timestamp}\n\n`;
-        const output = header + result;
-
-        // Write output file
-        const outputPath = path.join(ORG_DIR, `${slug}.md`);
-        fs.writeFileSync(outputPath, output, "utf8");
-        console.log(`    ✓ Saved → ${outputPath}`);
+        fs.writeFileSync(path.join(ORG_DIR, `${slug}.md`), header + stdout, "utf8");
+        setSubjectStatus(slug, "qbankStatus", "done");
         processed++;
       } catch (err) {
-        // Clean up temp file if it still exists
-        try { fs.unlinkSync(tmpFile); } catch (_) {}
-        console.log(`    ✗ Error processing [${slug}]: ${err.message}`);
+        setSubjectStatus(slug, "qbankStatus", "error");
+        setSubjectStatus(slug, "error", err.message.slice(0, 80));
+        console.error(`\nFull error for ${slug}:`, err);
       }
     } catch (err) {
-      console.log(`    ✗ Error processing [${slug}]: ${err.message}`);
+      setSubjectStatus(slug, "qbankStatus", "error");
+      setSubjectStatus(slug, "error", err.message.slice(0, 80));
+      console.error(`\nFull error for ${slug}:`, err);
     }
+
+    dashState.totalDone++;
+    dashState.activeSlug = null;
   }
 
-  console.log(`\n${"=".repeat(64)}`);
-  console.log(`Organization complete:`);
-  console.log(`  Processed: ${processed}`);
-  console.log(`  Skipped: ${skipped}`);
-  console.log(`  Output directory: ${ORG_DIR}/`);
-  console.log("=".repeat(64));
+  stopDashboard();
+  dashState.phase      = "done";
+  dashState.activeSlug = null;
+  dashState.activeTask = "";
+  renderDashboard(subjectSlugs, semesterWord, "organize");
+  process.stdout.removeListener("resize", onResize);
+
+  await new Promise(resolve => {
+    const onData = () => { process.stdin.removeListener("data", onData); resolve(); };
+    process.stdin.resume();
+    process.stdin.on("data", onData);
+  });
+
+  process.stdout.write("\x1b[?1049l\x1b[?25h");
+  if (process.stdin.isTTY) process.stdin.setRawMode(false);
+  process.stdin.pause();
+
+  console.log(chalk.bold.green("\n╭─────────────────────────────────────╮"));
+  console.log(chalk.bold.green("│  ORGANIZE COMPLETE                  │"));
+  console.log(chalk.bold.green("╰─────────────────────────────────────╯"));
+  console.log(`  Processed : ${processed}`);
+  console.log(`  Skipped   : ${skipped}`);
+  console.log(`  Output    : ${ORG_DIR}/\n`);
 }
+
 
 // ── Main ──────────────────────────────────────────────────────
 
 (async () => {
-  // ── Get semester from user ───────────────────────────────────
-  let semNum;
-  while (true) {
-    const input = await prompt("Enter semester number (1-8): ");
-    semNum = parseInt(input, 10);
-    if (semNum >= 1 && semNum <= 8) break;
-    console.log("  Please enter a number between 1 and 8.");
-  }
+  // ── Config screen ────────────────────────────────────────────
+  const { semester: semNum, modeId } = await runConfigScreen();
 
-  // ── Ask what to scrape ───────────────────────────────────────
-  let scrapeQBanks = false;
-  let scrapeSyllabus = false;
-  
-  while (true) {
-    const option = await prompt(
-      "\nWhat to scrape?\n" +
-      "  1) Question Banks only\n" +
-      "  2) Syllabus only\n" +
-      "  3) Both Question Banks and Syllabus\n" +
-      "  4) Organize Questions (uses already-scraped files)\n" +
-      "  5) Cancel\n" +
-      "Enter choice (1-5): "
-    );
-    
-    if (option === "1") {
-      scrapeQBanks = true;
-      break;
-    } else if (option === "2") {
-      scrapeSyllabus = true;
-      break;
-    } else if (option === "3") {
-      scrapeQBanks = true;
-      scrapeSyllabus = true;
-      break;
-    } else if (option === "4") {
-      // Organize Questions mode
-      const semesterWord = SEMESTER_WORDS[semNum];
-      await organizeQuestions(semNum, semesterWord);
-      console.log("Done!");
-      process.exit(0);
-    } else if (option === "5") {
-      console.log("Cancelled.");
-      process.exit(0);
-    } else {
-      console.log("  Invalid choice. Please enter 1, 2, 3, 4, or 5.");
-    }
-  }
+  const semesterWord   = SEMESTER_WORDS[semNum];
+  const scrapeQBanks   = modeId === "qbanks"   || modeId === "both";
+  const scrapeSyllabus = modeId === "syllabus" || modeId === "both";
+  const isOrganize     = modeId === "organize";
 
-  const semesterWord = SEMESTER_WORDS[semNum];
   const BASE         = `${SITE}/semester/${semesterWord}`;
   const OUT_DIR      = path.join("output", semesterWord);
   const QBANK_DIR    = path.join(OUT_DIR, "question-banks");
   const SYLLABUS_DIR = path.join(OUT_DIR, "syllabus");
 
-  console.log(`\nScraping semester ${semNum} (${semesterWord})...`);
+  if (isOrganize) {
+    // Organize mode: stays fully in TUI, organizeQuestions handles everything
+    await organizeQuestions(semNum, semesterWord);
+    process.exit(0);
+  }
+
+  // ── Show loading screen immediately after config ─────────────
+  let loadSpinTimer = null;
+  let loadSpinIdx   = 0;
+  const updateLoading = (msg) => renderLoadingScreen(SPINNER[loadSpinIdx] + "  " + msg);
+  const startLoadingScreen = (msg) => {
+    updateLoading(msg);
+    loadSpinTimer = setInterval(() => {
+      loadSpinIdx = (loadSpinIdx + 1) % SPINNER.length;
+      updateLoading(msg);
+    }, 80);
+  };
+  const stopLoadingScreen = () => {
+    if (loadSpinTimer) { clearInterval(loadSpinTimer); loadSpinTimer = null; }
+  };
+
+  startLoadingScreen("Launching browser...");
 
   // ── Launch browser ───────────────────────────────────────────
   const browser = await chromium.launch({ headless: true });
@@ -535,187 +901,217 @@ QUESTION BANK:
 
   const page = await context.newPage();
 
-  // ── Create output directories ────────────────────────────────
-  if (scrapeQBanks) fs.mkdirSync(QBANK_DIR, { recursive: true });
-  if (scrapeSyllabus) fs.mkdirSync(SYLLABUS_DIR, { recursive: true });
-
-  // ── Warm up + discover subjects ──────────────────────────────
-  console.log("Warming up session...");
+  stopLoadingScreen();
+  startLoadingScreen("Connecting to hamrocsit.com...");
   await page.goto(`${BASE}/`, { waitUntil: "networkidle", timeout: 25000 });
   await sleep(2000);
 
+  stopLoadingScreen();
+  startLoadingScreen("Discovering subjects...");
   const SUBJECTS = await getSubjects(page, semesterWord);
-  console.log(`Found ${SUBJECTS.length} subject(s): ${SUBJECTS.map(s => s.slug).join(", ")}`);
+  stopLoadingScreen();
 
   if (!SUBJECTS.length) {
-    console.log("No subjects found. Check the semester URL or site structure.");
+    process.stdout.write("\x1b[?1049l\x1b[?25h");
+    console.error(chalk.red("\n  ✖ No subjects found. Check the semester URL or site structure."));
     await browser.close();
-    return;
+    process.exit(1);
   }
 
-  // ── Let user select which subjects to scrape ─────────────────
+  // ── TUI subject selection ─────────────────────────────────────
   const selectedSubjects = await selectSubjects(SUBJECTS);
-  
-  if (!selectedSubjects.length) {
-    console.log("No subjects selected. Cancelling.");
-    await browser.close();
-    return;
+
+  // ── Init dashboard state ──────────────────────────────────────
+  for (const { slug } of selectedSubjects) {
+    dashState.subjects[slug] = {
+      qbankStatus:   scrapeQBanks   ? "pending" : null,
+      syllabusStatus: scrapeSyllabus ? "pending" : null,
+    };
   }
+  dashState.totalCount = selectedSubjects.length;
+
+  // ── Create output dirs ────────────────────────────────────────
+  if (scrapeQBanks)   fs.mkdirSync(QBANK_DIR,    { recursive: true });
+  if (scrapeSyllabus) fs.mkdirSync(SYLLABUS_DIR,  { recursive: true });
+
+  const subjectSlugs = selectedSubjects.map(s => s.slug);
+
+  // ── Graceful abort ────────────────────────────────────────────
+  const cleanup = async () => {
+    stopDashboard();
+    process.stdout.write("\x1b[?1049l\x1b[?25h");
+    if (process.stdin.isTTY) process.stdin.setRawMode(false);
+    await browser.close().catch(() => {});
+    process.exit(0);
+  };
+  process.on("SIGINT",  cleanup);
+  process.on("SIGTERM", cleanup);
+
+  const onResize = () => renderDashboard(subjectSlugs, semesterWord, modeId);
+  process.stdout.on("resize", onResize);
+
+  startDashboard(subjectSlugs, semesterWord, modeId);
 
   // ── Scrape each subject ──────────────────────────────────────
   for (const { slug, name } of selectedSubjects) {
-    console.log(`\n${"=".repeat(64)}`);
-    console.log(`  [${name}]`);
-    console.log("=".repeat(64));
+    setTask(slug, "Starting...");
 
-    // ── Scrape Question Banks ────────────────────────────────
+    // ── Question Banks ──────────────────────────────────────
     if (scrapeQBanks) {
+      setSubjectStatus(slug, "qbankStatus", "active");
+      setTask(slug, "Fetching question bank index...");
+
       const qbankLines = [];
       qbankLines.push(`# ${name}`);
       qbankLines.push(`**Semester:** ${semNum} | **Generated:** ${new Date().toLocaleString()}\n`);
       qbankLines.push("## Question Banks\n");
       qbankLines.push("Sorted by year (newest first). Model questions marked with **[MODEL QUESTION]**.\n");
 
-      const indexUrl = `${BASE}/${slug}/question-bank/`;
-      await page.goto(indexUrl, { waitUntil: "networkidle", timeout: 25000 });
-      await sleep(DELAY_MS);
+      try {
+        const indexUrl = `${BASE}/${slug}/question-bank/`;
+        await page.goto(indexUrl, { waitUntil: "networkidle", timeout: 25000 });
+        await sleep(DELAY_MS);
 
-      const paperLinks = await getPaperLinks(page, semesterWord, slug);
-      console.log(`  Found ${paperLinks.length} question bank paper(s)`);
+        const paperLinks = await getPaperLinks(page, semesterWord, slug);
+        let hasQuestions = false;
+        let totalQCount  = 0;
 
-      let hasQuestions = false;
+        if (!paperLinks.length) {
+          qbankLines.push("*No paper links found*\n");
+        } else {
+          for (const { label, url, year, isModel: model } of paperLinks) {
+            const yearDisplay = year || "Model/Unknown";
+            const modelTag    = model ? " **[MODEL QUESTION]**" : "";
+            setTask(slug, `Scraping ${yearDisplay}...`);
 
-      if (!paperLinks.length) {
-        qbankLines.push("*No paper links found*\n");
-      } else {
-        for (const { label, url, year, isModel: model } of paperLinks) {
-          const yearDisplay = year || "Model/Unknown";
-          const modelTag   = model ? " **[MODEL QUESTION]**" : "";
-          console.log(`  → ${yearDisplay} ${modelTag}  '${label}'`);
+            await page.goto(url, { waitUntil: "networkidle", timeout: 25000 });
+            await sleep(DELAY_MS);
 
-          await page.goto(url, { waitUntil: "networkidle", timeout: 25000 });
-          await sleep(DELAY_MS);
+            const questions = await extractQuestions(page);
+            totalQCount += questions.length;
 
-          const questions = await extractQuestions(page);
-          console.log(`    ${questions.length} question(s) extracted`);
-
-          if (questions.length) {
-            hasQuestions = true;
-            qbankLines.push(`### Year: ${yearDisplay}${modelTag}`);
-            qbankLines.push(`**Label:** ${label}`);
-            qbankLines.push(`**URL:** ${url}`);
-            qbankLines.push("");
-            questions.forEach(q => qbankLines.push(`${q}`));
-            qbankLines.push("");
+            if (questions.length) {
+              hasQuestions = true;
+              qbankLines.push(`### Year: ${yearDisplay}${modelTag}`);
+              qbankLines.push(`**Label:** ${label}`);
+              qbankLines.push(`**URL:** ${url}`);
+              qbankLines.push("");
+              questions.forEach(q => qbankLines.push(q));
+              qbankLines.push("");
+            }
           }
         }
-      }
 
-      // ── Only write file if there's actual content ────────────
-      if (hasQuestions) {
-        const qbankFile = `${QBANK_DIR}/${slug}.md`;
-        fs.writeFileSync(qbankFile, qbankLines.join("\n"), "utf8");
-        console.log(`  ✓ Saved question bank → ${qbankFile}`);
-      } else {
-        console.log(`  ✗ Skipped: no questions extracted for ${slug}`);
+        if (hasQuestions) {
+          fs.writeFileSync(path.join(QBANK_DIR, `${slug}.md`), qbankLines.join("\n"), "utf8");
+          setSubjectStatus(slug, "qbankStatus", "done");
+          setSubjectStatus(slug, "qbankCount", totalQCount);
+        } else {
+          setSubjectStatus(slug, "qbankStatus", "skipped");
+        }
+      } catch (e) {
+        setSubjectStatus(slug, "qbankStatus", "error");
+        setSubjectStatus(slug, "error", e.message);
       }
     }
 
-    // ── Scrape Syllabus ──────────────────────────────────────
+    // ── Syllabus ────────────────────────────────────────────
     if (scrapeSyllabus) {
+      setSubjectStatus(slug, "syllabusStatus", "active");
+      setTask(slug, "Scraping syllabus...");
+
       const syllabusLines = [];
       syllabusLines.push(`# ${name}`);
       syllabusLines.push(`**Semester:** ${semNum} | **Generated:** ${new Date().toLocaleString()}\n`);
       syllabusLines.push("## Syllabus\n");
 
-      const syllabusUrl = `${BASE}/${slug}/syllabus`;
-      await page.goto(syllabusUrl, { waitUntil: "networkidle", timeout: 25000 });
-      await sleep(DELAY_MS);
+      try {
+        const syllabusUrl = `${BASE}/${slug}/syllabus`;
+        await page.goto(syllabusUrl, { waitUntil: "networkidle", timeout: 25000 });
+        await sleep(DELAY_MS);
 
-      const syllabus = await extractSyllabus(page);
-      console.log(`  Extracting syllabus content...`);
+        const syllabus = await extractSyllabus(page);
+        let hasSyllabusContent = false;
 
-      let hasSyllabusContent = false;
-
-      if (!syllabus) {
-        console.log("  (Syllabus not found on page)");
-      } else {
-        if (syllabus.header) {
-          const headerLines = syllabus.header.split('\n').filter(line => line.trim());
-          headerLines.forEach(line => syllabusLines.push(`> ${line}`));
-          syllabusLines.push("");
-          hasSyllabusContent = true;
-        }
-
-        if (syllabus.courseMetadata) {
-          syllabusLines.push("### Course Information\n");
-          const metaLines = syllabus.courseMetadata.split('\n').filter(line => line.trim());
-          metaLines.forEach(line => {
-            if (line.includes(':')) {
-              const [key, value] = line.split(':').map(s => s.trim());
-              syllabusLines.push(`- **${key}:** ${value}`);
-            } else {
-              syllabusLines.push(`- ${line}`);
-            }
-          });
-          syllabusLines.push("");
-          hasSyllabusContent = true;
-        }
-
-        if (syllabus.units && syllabus.units.length) {
-          syllabusLines.push("### Course Contents\n");
-          for (const unit of syllabus.units) {
-            if (unit.title) {
-              syllabusLines.push(`#### ${unit.title}\n`);
-              if (unit.description) {
-                syllabusLines.push(unit.description);
-                hasSyllabusContent = true;
+        if (syllabus) {
+          if (syllabus.header) {
+            syllabus.header.split("\n").filter(l => l.trim()).forEach(l => syllabusLines.push(`> ${l}`));
+            syllabusLines.push("");
+            hasSyllabusContent = true;
+          }
+          if (syllabus.courseMetadata) {
+            syllabusLines.push("### Course Information\n");
+            syllabus.courseMetadata.split("\n").filter(l => l.trim()).forEach(l => {
+              if (l.includes(":")) {
+                const [k, v] = l.split(":").map(s => s.trim());
+                syllabusLines.push(`- **${k}:** ${v}`);
+              } else {
+                syllabusLines.push(`- ${l}`);
               }
-              syllabusLines.push("");
+            });
+            syllabusLines.push("");
+            hasSyllabusContent = true;
+          }
+          if (syllabus.units && syllabus.units.length) {
+            syllabusLines.push("### Course Contents\n");
+            for (const unit of syllabus.units) {
+              if (unit.title) {
+                syllabusLines.push(`#### ${unit.title}\n`);
+                if (unit.description) { syllabusLines.push(unit.description); hasSyllabusContent = true; }
+                syllabusLines.push("");
+              }
             }
           }
+          if (syllabus.labWorks)       { syllabusLines.push("### Laboratory Works\n", syllabus.labWorks, ""); hasSyllabusContent = true; }
+          if (syllabus.textBooks)      { syllabusLines.push("### Text Books\n");      syllabus.textBooks.split("\n").filter(l=>l.trim()).forEach(l=>syllabusLines.push(`- ${l}`));      syllabusLines.push(""); hasSyllabusContent = true; }
+          if (syllabus.referenceBooks) { syllabusLines.push("### Reference Books\n"); syllabus.referenceBooks.split("\n").filter(l=>l.trim()).forEach(l=>syllabusLines.push(`- ${l}`)); syllabusLines.push(""); hasSyllabusContent = true; }
         }
 
-        if (syllabus.labWorks) {
-          syllabusLines.push("### Laboratory Works\n");
-          syllabusLines.push(syllabus.labWorks);
-          syllabusLines.push("");
-          hasSyllabusContent = true;
+        if (hasSyllabusContent) {
+          fs.writeFileSync(path.join(SYLLABUS_DIR, `${slug}.md`), syllabusLines.join("\n"), "utf8");
+          setSubjectStatus(slug, "syllabusStatus", "done");
+        } else {
+          setSubjectStatus(slug, "syllabusStatus", "skipped");
         }
-
-        if (syllabus.textBooks) {
-          syllabusLines.push("### Text Books\n");
-          const bookLines = syllabus.textBooks.split('\n').filter(line => line.trim());
-          bookLines.forEach(line => syllabusLines.push(`- ${line}`));
-          syllabusLines.push("");
-          hasSyllabusContent = true;
-        }
-
-        if (syllabus.referenceBooks) {
-          syllabusLines.push("### Reference Books\n");
-          const refLines = syllabus.referenceBooks.split('\n').filter(line => line.trim());
-          refLines.forEach(line => syllabusLines.push(`- ${line}`));
-          syllabusLines.push("");
-          hasSyllabusContent = true;
-        }
-      }
-
-      // ── Only write file if there's actual content ────────────
-      if (hasSyllabusContent) {
-        const syllabusFile = `${SYLLABUS_DIR}/${slug}.md`;
-        fs.writeFileSync(syllabusFile, syllabusLines.join("\n"), "utf8");
-        console.log(`  ✓ Saved syllabus → ${syllabusFile}`);
-      } else {
-        console.log(`  ✗ Skipped: no syllabus content extracted for ${slug}`);
+      } catch (e) {
+        setSubjectStatus(slug, "syllabusStatus", "error");
+        setSubjectStatus(slug, "error", e.message);
       }
     }
+
+    dashState.totalDone++;
+    dashState.activeSlug = null;
   }
 
   await browser.close();
+  stopDashboard();
 
-  console.log(`\n${"=".repeat(64)}`);
-  console.log(`Done! Markdown files saved to:`);
-  if (scrapeQBanks) console.log(`  Question Banks → ${QBANK_DIR}/`);
-  if (scrapeSyllabus) console.log(`  Syllabus → ${SYLLABUS_DIR}/`);
-  console.log("=".repeat(64));
+  // ── Final render + wait for keypress ─────────────────────────
+  dashState.phase      = "done";
+  dashState.activeSlug = null;
+  dashState.activeTask = "";
+  renderDashboard(subjectSlugs, semesterWord, modeId);
+
+  process.stdout.removeListener("resize", onResize);
+
+  await new Promise(resolve => {
+    const onData = () => {
+      process.stdin.removeListener("data", onData);
+      resolve();
+    };
+    process.stdin.resume();
+    process.stdin.on("data", onData);
+  });
+
+  process.stdout.write("\x1b[?1049l\x1b[?25h");
+  if (process.stdin.isTTY) process.stdin.setRawMode(false);
+  process.stdin.pause();
+
+  // ── Summary ───────────────────────────────────────────────────
+  console.log(chalk.bold.green("\n╭─────────────────────────────────────╮"));
+  console.log(chalk.bold.green("│  SCRAPE COMPLETE                    │"));
+  console.log(chalk.bold.green("╰─────────────────────────────────────╯"));
+  if (scrapeQBanks)   console.log(`  Question Banks → ${QBANK_DIR}/`);
+  if (scrapeSyllabus) console.log(`  Syllabus       → ${SYLLABUS_DIR}/`);
+  console.log();
 })();
