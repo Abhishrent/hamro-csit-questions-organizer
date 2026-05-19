@@ -18,6 +18,8 @@
 const { chromium } = require("playwright");
 const fs           = require("fs");
 const readline     = require("readline");
+const path         = require("path");
+const os           = require("os");
 const { execSync } = require("child_process");
 const inquirer     = require("inquirer").default;
 
@@ -346,9 +348,9 @@ SYLLABUS:
 QUESTION BANK:
 {{QUESTIONS}}`;
 
-  const QBANK_DIR    = `output/${semesterWord}/question-banks`;
-  const SYLLABUS_DIR = `output/${semesterWord}/syllabus`;
-  const ORG_DIR      = `output/${semesterWord}/organized`;
+  const QBANK_DIR    = path.join("output", semesterWord, "question-banks");
+  const SYLLABUS_DIR = path.join("output", semesterWord, "syllabus");
+  const ORG_DIR      = path.join("output", semesterWord, "organized");
 
   // Create output directory if it doesn't exist
   fs.mkdirSync(ORG_DIR, { recursive: true });
@@ -385,8 +387,8 @@ QUESTION BANK:
 
   for (const { slug } of selectedSubjects) {
     const qbankFile = `${slug}.md`;
-    const qbankPath = `${QBANK_DIR}/${qbankFile}`;
-    const syllabusPath = `${SYLLABUS_DIR}/${slug}.md`;
+    const qbankPath = path.join(QBANK_DIR, qbankFile);
+    const syllabusPath = path.join(SYLLABUS_DIR, `${slug}.md`);
 
     // Check if both files exist
     if (!fs.existsSync(syllabusPath)) {
@@ -417,15 +419,16 @@ QUESTION BANK:
       console.log(`    Calling Gemini CLI...`);
       
       // Write prompt to temporary file
-      const tmpFile = `/tmp/gemini_prompt_${slug}_${Date.now()}.txt`;
+      const tmpFile = path.join(os.tmpdir(), `gemini_prompt_${slug}_${Date.now()}.txt`);
       fs.writeFileSync(tmpFile, fullPrompt, "utf8");
       
       try {
-        // Call gemini CLI with the prompt file using stdin and -p flag
-        const result = execSync(`cat ${tmpFile} | gemini -p ""`, {
+        // Call gemini CLI with the prompt file content via stdin
+        const promptContent = fs.readFileSync(tmpFile, "utf8");
+        const result = execSync(`gemini -p ""`, {
+          input: promptContent,
           encoding: "utf8",
-          maxBuffer: 10 * 1024 * 1024,
-          shell: "/bin/bash"
+          maxBuffer: 10 * 1024 * 1024
         });
         
         // Clean up temp file
@@ -437,7 +440,7 @@ QUESTION BANK:
         const output = header + result;
 
         // Write output file
-        const outputPath = `${ORG_DIR}/${slug}.md`;
+        const outputPath = path.join(ORG_DIR, `${slug}.md`);
         fs.writeFileSync(outputPath, output, "utf8");
         console.log(`    ✓ Saved → ${outputPath}`);
         processed++;
@@ -512,9 +515,9 @@ QUESTION BANK:
 
   const semesterWord = SEMESTER_WORDS[semNum];
   const BASE         = `${SITE}/semester/${semesterWord}`;
-  const OUT_DIR      = `output/${semesterWord}`;
-  const QBANK_DIR    = `${OUT_DIR}/question-banks`;
-  const SYLLABUS_DIR = `${OUT_DIR}/syllabus`;
+  const OUT_DIR      = path.join("output", semesterWord);
+  const QBANK_DIR    = path.join(OUT_DIR, "question-banks");
+  const SYLLABUS_DIR = path.join(OUT_DIR, "syllabus");
 
   console.log(`\nScraping semester ${semNum} (${semesterWord})...`);
 
