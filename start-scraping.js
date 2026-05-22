@@ -148,7 +148,8 @@ async function runConfigScreen() {
 
   return new Promise((resolve) => {
     const onKey = (str, key) => {
-      if (key.ctrl && key.name === "c") {
+      if ((key.ctrl && (key.name === "c" || key.name === "z")) || str === "\x03" || str === "\x1a") {
+        process.stdin.removeListener("keypress", onKey);
         process.stdout.write("\x1b[?1049l\x1b[?25h");
         process.exit(0);
       }
@@ -412,7 +413,8 @@ async function selectSubjects(subjects) {
 
   return new Promise((resolve) => {
     const onKey = (str, key) => {
-      if (key.ctrl && key.name === "c") {
+      if ((key.ctrl && (key.name === "c" || key.name === "z")) || str === "\x03" || str === "\x1a") {
+        process.stdin.removeListener("keypress", onKey);
         process.stdout.write("\x1b[?1049l\x1b[?25h");
         process.exit(0);
       }
@@ -756,6 +758,19 @@ QUESTION BANK:
   dashState.totalCount = selectedSubjects.length;
 
   const subjectSlugs = selectedSubjects.map(s => s.slug);
+
+  // In raw mode SIGINT/SIGTSTP are never raised, so catch Ctrl+C/Z via keypress
+  const onAbortKey = (str, key) => {
+    if ((key && key.ctrl && (key.name === "c" || key.name === "z")) || str === "\x03" || str === "\x1a") {
+      process.stdin.removeListener("keypress", onAbortKey);
+      stopDashboard();
+      process.stdout.write("\x1b[?1049l\x1b[?25h");
+      if (process.stdin.isTTY) process.stdin.setRawMode(false);
+      process.exit(0);
+    }
+  };
+  process.stdin.on("keypress", onAbortKey);
+
   const onResize = () => renderDashboard(subjectSlugs, semesterWord, "organize");
   process.stdout.on("resize", onResize);
   startDashboard(subjectSlugs, semesterWord, "organize");
@@ -946,6 +961,15 @@ QUESTION BANK:
   };
   process.on("SIGINT",  cleanup);
   process.on("SIGTERM", cleanup);
+
+  // In raw mode SIGINT/SIGTSTP are never raised, so catch Ctrl+C/Z via keypress
+  const onAbortKey = (str, key) => {
+    if ((key && key.ctrl && (key.name === "c" || key.name === "z")) || str === "\x03" || str === "\x1a") {
+      process.stdin.removeListener("keypress", onAbortKey);
+      cleanup();
+    }
+  };
+  process.stdin.on("keypress", onAbortKey);
 
   const onResize = () => renderDashboard(subjectSlugs, semesterWord, modeId);
   process.stdout.on("resize", onResize);
